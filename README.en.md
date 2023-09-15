@@ -6,7 +6,7 @@
 
 ### Hello👋
 
-Language : Indonesia/English
+Language : Indonesia
 
 ---
 
@@ -16,7 +16,13 @@ Contains the Lending Information System, namely the Library.s
 ---
 
 ### Feature
-- Coming Soon
+- Register Accound
+- Book Lending
+- Book Return
+- Book Management
+- Book Search Feature
+- Digital Book
+- Book Stock Management
 
 ---
 
