@@ -36,8 +36,8 @@ Contains the Lending Information System, namely the Library.s
 
 
 
-### Translation for this README
-- [English](./README.en.md)
+### Back to Original Language
+- [Indonesia](./README.md)
 
 
 # Use
