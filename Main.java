@@ -35,7 +35,7 @@ public class Main {
         
         // Meminta input dari user
         System.out.println("\nSilahkan pilih salah satu dari menu diatas");
-        System.out.print("$>");
+        System.out.print("$> ");
         pilihanInput = input.nextInt();
         System.out.println("");
 
