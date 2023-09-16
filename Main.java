@@ -39,6 +39,7 @@ public class Main {
         pilihanInput = input.nextInt();
         System.out.println("");
 
+        // Memilih sesuai dengan input user
         switch(pilihanInput){
             case 1:
                 new LoginRegister();        // Menjalankan Class LoginRegister.java
@@ -67,5 +68,7 @@ public class Main {
         }
 
     }
+
+    
 
 }
