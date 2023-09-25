@@ -4,6 +4,7 @@ import Tampilan.LoginRegister;          // Mengambil Class LoginRegister
 import Tampilan.ManajemenBuku;          // Mengambil Class ManajemenBuku
 import Tampilan.MeminjamBuku;           // Mengambil Class MeminjamBuku
 import Tampilan.MeminjamBukuDigital;    // Mengambil Class MeminjamBukuDigital
+import Tampilan.MengelolaStokBuku;
 import Tampilan.PencarianBuku;          // Mengambil Class PencarianBuku
 import Tampilan.PengembalianBuku;       // Mengambil Class PengembalianBuku
 /**
@@ -60,7 +61,7 @@ public class Main {
                 new MeminjamBukuDigital();  // Menjalankan Class MeminjamBukuDigital.java
                 break;
             case 7:
-                new ManajemenBuku();        // Menjalankan Class ManajemenBuku.java
+                new MengelolaStokBuku();        // Menjalankan Class ManajemenBuku.java
                 break;
             default:        // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
                 System.out.println("Maaf Input anda tidak sesuai, program keluar");
