@@ -36,25 +36,25 @@ public class Main {
         // Memilih sesuai dengan input user
         switch(pilihanInput){
             case 1:
-                loginRegister();        // Menjalankan Class LoginRegister.java
+                loginRegister();        
                 break;
             case 2:
-                meminjamBuku();         // Menjalankan Class MeminjamBuku.java
+                meminjamBuku();         
                 break;
             case 3:
-                pengembalianBuku();     // Menjalankan Class PengembalianBuku.java
+                pengembalianBuku();     
                 break;
             case 4:
-                manajemenBuku();        // Menjalankan Class ManajemenBuku.java
+                manajemenBuku();        
                 break;
             case 5:
-                pencarianBuku();        // Menjalankan Class PencarianBuku.java
+                pencarianBuku();        
                 break;
             case 6:
-                meminjamBukuDigital();  // Menjalankan Class MeminjamBukuDigital.java
+                meminjamBukuDigital();  
                 break;
             case 7:
-                mengelolaStokBuku();        // Menjalankan Class ManajemenBuku.java
+                mengelolaStokBuku();        
                 break;
             default:        // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
                 System.out.println("Maaf Input anda tidak sesuai, program keluar");
