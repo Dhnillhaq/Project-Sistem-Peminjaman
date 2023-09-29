@@ -1,12 +1,5 @@
 import java.util.Scanner;
 
-import Tampilan.LoginRegister;          // Mengambil Class LoginRegister
-import Tampilan.ManajemenBuku;          // Mengambil Class ManajemenBuku
-import Tampilan.MeminjamBuku;           // Mengambil Class MeminjamBuku
-import Tampilan.MeminjamBukuDigital;    // Mengambil Class MeminjamBukuDigital
-import Tampilan.MengelolaStokBuku;
-import Tampilan.PencarianBuku;          // Mengambil Class PencarianBuku
-import Tampilan.PengembalianBuku;       // Mengambil Class PengembalianBuku
 /**
  *  Main
  *  Deskripsi:
@@ -43,25 +36,25 @@ public class Main {
         // Memilih sesuai dengan input user
         switch(pilihanInput){
             case 1:
-                new LoginRegister();        // Menjalankan Class LoginRegister.java
+                loginRegister();        // Menjalankan Class LoginRegister.java
                 break;
             case 2:
-                new MeminjamBuku().meminjamBuku();         // Menjalankan Class MeminjamBuku.java
+                meminjamBuku();         // Menjalankan Class MeminjamBuku.java
                 break;
             case 3:
-                new PengembalianBuku();     // Menjalankan Class PengembalianBuku.java
+                pengembalianBuku();     // Menjalankan Class PengembalianBuku.java
                 break;
             case 4:
-                new ManajemenBuku();        // Menjalankan Class ManajemenBuku.java
+                manajemenBuku();        // Menjalankan Class ManajemenBuku.java
                 break;
             case 5:
-                new PencarianBuku();        // Menjalankan Class PencarianBuku.java
+                pencarianBuku();        // Menjalankan Class PencarianBuku.java
                 break;
             case 6:
-                new MeminjamBukuDigital();  // Menjalankan Class MeminjamBukuDigital.java
+                meminjamBukuDigital();  // Menjalankan Class MeminjamBukuDigital.java
                 break;
             case 7:
-                new MengelolaStokBuku();        // Menjalankan Class ManajemenBuku.java
+                mengelolaStokBuku();        // Menjalankan Class ManajemenBuku.java
                 break;
             default:        // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
                 System.out.println("Maaf Input anda tidak sesuai, program keluar");
@@ -72,11 +65,11 @@ public class Main {
 
     //// METHOD AREA ////
 
-    public void loginRegister2() {
+    public static void loginRegister() {
         // Isi dari method
     }
 
-    public void meminjamBuku2() {
+    public static void meminjamBuku() {
 
         // Deklarasi Scanner untuk input 
         Scanner input = new Scanner(System.in);
@@ -99,6 +92,21 @@ public class Main {
         // Menampilkan hasil dari peminjaman
         System.out.println("\n[stok "+stokBukuNonAkademik+"]\nBuku Non-Akademik\n");
 
+    }
+    public static void pengembalianBuku() {
+        // Isi dari method
+    }
+    public static void manajemenBuku() {
+        // Isi dari method
+    }
+    public static void pencarianBuku() {
+        // Isi dari method
+    }
+    public static void meminjamBukuDigital() {
+        // Isi dari method
+    }
+    public static void mengelolaStokBuku() {
+        // Isi dari method
     }
 
 }
