@@ -8,6 +8,16 @@ import java.util.Scanner;
  *  Sehingga program bisa dikumpulkan menjadi satu di Class Main ini.
  */
 public class Main {
+    
+    /*
+        Deklarasi variabel yang menentukan apakah dia boleh login atau tidak, 
+        deklarasi reusable variable, dan
+        deklarasi data username dan password
+    */ 
+    public static boolean canLogin = false;
+    public static String separator = "\n\n-------------------------------------------------------";
+    public static String storedUsername = "Admin";
+    public static String storedPassword = "admin";
 
     public static void main(String[] args) {
         // Deklarasi Scanner untuk input
@@ -16,57 +26,77 @@ public class Main {
         // Deklarasi Variabel
         int pilihanInput;
 
-        // Tampilan Menu 
-        System.out.println("Selamat Datang di Perpustakaan! (Under Development)\n");
-
-        System.out.println("1] Login/Register");
-        System.out.println("2] Peminjaman Buku");
-        System.out.println("3] Pengembalian Buku");
-        System.out.println("4] Manajemen Buku");
-        System.out.println("5] Pencarian Buku");
-        System.out.println("6] Buku Digital");
-        System.out.println("7] Pengelolaan Stok Buku");
+        // WAJIB Login sebelum masuk
+        loginRegister();
         
-        // Meminta input dari user
-        System.out.println("\nSilahkan pilih salah satu dari menu diatas");
-        System.out.print("$> ");
-        pilihanInput = input.nextInt();
-        System.out.println("");
-
-        // Memilih sesuai dengan input user
-        switch(pilihanInput){
-            case 1:
-                loginRegister();        
-                break;
-            case 2:
-                meminjamBuku();         
-                break;
-            case 3:
-                pengembalianBuku();     
-                break;
-            case 4:
-                manajemenBuku();        
-                break;
-            case 5:
-                pencarianBuku();        
-                break;
-            case 6:
-                meminjamBukuDigital();  
-                break;
-            case 7:
-                mengelolaStokBuku();        
-                break;
-            default:        // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
-                System.out.println("Maaf Input anda tidak sesuai, program keluar");
-                break;
+        
+        if (canLogin) {
+            // Tampilan Menu 
+            System.out.println("Selamat Datang di Perpustakaan! (Under Development)\n");
+            
+            System.out.println("1] Peminjaman Buku");
+            System.out.println("2] Pengembalian Buku");
+            System.out.println("3] Manajemen Buku");
+            System.out.println("4] Pencarian Buku");
+            System.out.println("5] Buku Digital");
+            System.out.println("6] Pengelolaan Stok Buku");
+            
+            // Meminta input dari user
+            System.out.println("\nSilahkan pilih salah satu dari menu diatas");
+            System.out.print("$> ");
+            pilihanInput = input.nextInt();
+    
+            // Memilih sesuai dengan input user
+            switch(pilihanInput){
+                case 1:
+                    meminjamBuku();         
+                    break;
+                case 2:
+                    pengembalianBuku();     
+                    break;
+                case 3:
+                    manajemenBuku();        
+                    break;
+                case 4:
+                    pencarianBuku();        
+                    break;
+                case 5:
+                    meminjamBukuDigital();  
+                    break;
+                case 6:
+                    mengelolaStokBuku();        
+                    break;
+                default:        // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
+                    System.out.println("Maaf Input anda tidak sesuai, program keluar");
+                    break;
+            }
+        } else {
+            System.out.println("\nMaaf, tidak ada Username dengan password tersebut");
         }
 
     }
 
+    
     //// METHOD AREA ////
 
     public static void loginRegister() {
-        // Isi dari method
+        // Deklarasi Scanner dan variabel username
+        Scanner input = new Scanner(System.in);
+        String username, password;
+        
+        // Input Program
+        System.out.println("Silahkan verifikasi diri anda terlebih dahulu\n");
+        System.out.print("Username: ");
+        username = input.nextLine();
+        System.out.print("Password: ");
+        password = input.nextLine();
+        
+        // Jika benar
+        if ((username.equals(storedUsername)) && (password.equals(storedPassword))) {
+            canLogin = true;
+            System.out.println("\nBerhasil login!");
+            System.out.println(separator);
+        }
     }
 
     public static void meminjamBuku() {
@@ -78,7 +108,7 @@ public class Main {
         int stokBukuNonAkademik = 10;
 
         // Sambutan
-        System.out.println("---------------------------------");
+        System.out.println(separator);
         System.out.println("SELAMAT DATANG DI PEMINJAMAN BUKU\n");
 
         // User menentukan jumlah peminjaman buku
