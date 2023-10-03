@@ -71,7 +71,7 @@ public class Main {
                     break;
             }
         } else {
-            System.out.println("\nMaaf, tidak ada Username dengan password tersebut");
+            // System.out.println("\nMaaf, tidak ada Username dengan password tersebut");
         }
 
     }
@@ -92,11 +92,15 @@ public class Main {
         password = input.nextLine();
         
         // Jika benar
-        if ((username.equals(storedUsername)) && (password.equals(storedPassword))) {
+        if (username.equals(storedUsername)) {
+          if (password.equals(storedPassword))
             canLogin = true;
-            System.out.println("\nBerhasil login!");
-            System.out.println(separator);
+          else 
+            System.out.println("\nPassword salah");  
+        } else {
+            System.out.println("\nUsername & Password salah");
         }
+            
     }
 
     public static void meminjamBuku() {
