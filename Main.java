@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Sesuai dengan namanya, Main.java dibuat sebagai PROGRAM UTAMA dari beberapa
  * file.
  * Program ini digunakan untuk memanggil Class-class lain yang berada di luar
- * Class Main ini.
+ * Class Main ini.(On Progress)
  * Sehingga program bisa dikumpulkan menjadi satu di Class Main ini.
  */
 public class Main {
