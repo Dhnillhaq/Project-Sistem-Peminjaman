@@ -17,8 +17,8 @@ public class Main {
 
         // Deklarasi Variabel
         // Variabel Pilih Menu dan Stok Buku (Case 1)
-        int pilihanInput, stokBukuNonAkademik = 10;
-        int pilihBuku;
+        int pilihanInput, stokBukuAkademik = 10;
+        int pilihBuku, menu;
         
 
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
@@ -43,7 +43,7 @@ public class Main {
 
         // Variabel if true
         boolean canLogin = false;
-        // boolean exit = false;
+        boolean exit = false;
 
         // WAJIB Login sebelum masuk
         System.out.println("Silahkan verifikasi diri anda terlebih dahulu\n");
@@ -64,6 +64,7 @@ public class Main {
 
         if (canLogin) {
             // Tampilan Menu
+            do {
             System.out.println(separator);
             System.out.println("Selamat Datang di Perpustakaan! (Under Development)\n");
 
@@ -88,19 +89,35 @@ public class Main {
                     System.out.println("SELAMAT DATANG DI PEMINJAMAN BUKU\n");
 
                     // User menentukan jumlah peminjaman buku
-                    System.out.println("[stok " + stokBukuNonAkademik + "]\nBuku Non-Akademik\n");
+                    System.out.println("[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
                     System.out.print("Jumlah buku yang ingin dipinjam?\n$> ");
                     pilihBuku = input.nextInt();
 
                     // Melakukan pengurangan
-                    stokBukuNonAkademik -= pilihBuku;
+                    stokBukuAkademik -= pilihBuku;
 
                     // Menampilkan hasil dari peminjaman
-                    System.out.println("\n[stok " + stokBukuNonAkademik + "]\nBuku Non-Akademik\n");
+                    System.out.println("\n[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
                     break;
                 case 2:
-                    //  -Pengembalian Buku
-                      // *Isi dari case
+                    //  -Pengembalian Buku 
+                      // Sambutan
+                      System.out.println(separator);
+                    System.out.println("SELAMAT DATANG DI PENGEMBALIAN BUKU\n");
+
+                    // User menentukan jumlah pengembalian buku
+                    System.out.println("[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
+                    System.out.println("Jumlah buku yang ingin dikembalikan?\n");
+                    pilihBuku = input.nextInt();
+
+                    // Melakukan Pengembalian Stok Sedia
+                    stokBukuAkademik += pilihBuku;
+
+                    // Menampilkan hasil dari pengembalian
+                    System.out.printf("\n[stok %d]\nBUku Akademik\n", stokBukuAkademik);
+
+
+                    
 
                     break;
                 case 3:
@@ -211,10 +228,28 @@ public class Main {
                 default: // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
                     System.out.println("Maaf Input anda tidak sesuai, program keluar");
                     break;
-            }
-        } else {
+
+
+                } 
+                     System.out.println("Apakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
+                    menu = input.nextInt();
+
+                    switch (menu) {
+                        case 1:
+                            exit = true;
+                            break;
+                        case 2:
+                            exit = false;
+                            System.out.println("Terima kasih telah datang");
+                            break;
+                        default:
+                            System.out.println("Input yang anda masukkan salah");
+                            break;
+                    }
+                } while (exit);
+            }  else {
             System.out.println("Gagal Melakukan Login...");
+        } 
         }
 
-    }
     }
