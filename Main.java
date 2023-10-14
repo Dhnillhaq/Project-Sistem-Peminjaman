@@ -243,7 +243,8 @@ public class Main {
 
 
                 } 
-                    System.out.println("Apakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
+                    System.out.println("\nApakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
+                    System.out.print("$>");
                     menu = input.nextInt();
 
                     switch (menu) {
