@@ -16,9 +16,9 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         // Deklarasi Variabel
-        // Variabel Pilih Menu dan Stok Buku (Case 1)
+        // Variabel Pilih Menu dan Stok Buku (Case 1 & Case 2)
         int pilihanInput, stokBukuAkademik = 10;
-        int pilihBuku, menu;
+        int pilihBuku;
         
 
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
@@ -28,6 +28,9 @@ public class Main {
         String namaBuku2, pengarangBuku2;
         int jumlahHalBuku2;
         char inputValidate;
+
+        // Variabel Cari Buku (Case 4)
+        String cariBuku;
 
         // Variabel inputan Username dan Password
         String username, password;
@@ -44,6 +47,9 @@ public class Main {
         // Variabel if true
         boolean canLogin = false;
         boolean exit = false;
+
+        // Variabel kembali ke menu
+        int menu;
 
         // WAJIB Login sebelum masuk
         System.out.println("Silahkan verifikasi diri anda terlebih dahulu\n");
@@ -107,14 +113,15 @@ public class Main {
 
                     // User menentukan jumlah pengembalian buku
                     System.out.println("[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
-                    System.out.println("Jumlah buku yang ingin dikembalikan?\n");
+                    System.out.println("Jumlah buku yang ingin dikembalikan?");
+                    System.out.print("$>");
                     pilihBuku = input.nextInt();
 
                     // Melakukan Pengembalian Stok Sedia
                     stokBukuAkademik += pilihBuku;
 
                     // Menampilkan hasil dari pengembalian
-                    System.out.printf("\n[stok %d]\nBUku Akademik\n", stokBukuAkademik);
+                    System.out.printf("\n[stok %d]\nBuku Akademik\n", stokBukuAkademik);
 
 
                     
@@ -212,7 +219,29 @@ public class Main {
                     break;
                 case 4:
                     //  -Pencarian Buku
-                      // *Isi dari case
+                    // *Sambutan
+                      System.out.println(separator);
+                      System.out.println("SELAMAT DATANG DI PENCARIAN BUKU");
+
+                    // User menentukan buku yang dicari
+                    System.out.println("\nMasukkann buku yang ingin anda cari: ");
+                    System.out.print("$>");
+                    cariBuku = input.next();
+
+                    // Menampilkan buku sesuai inputan user
+                    if (cariBuku.equalsIgnoreCase("Malin") || cariBuku.equalsIgnoreCase("Malin Kundang")) {
+                        System.out.println("");
+                        System.out.println("Hasil Penulusaran Kami: \n");
+                        System.out.println(namaBuku1);
+                        System.out.println(pengarangBuku1);
+                        System.out.println(jumlahHalBuku1);
+                    } else if (cariBuku.equalsIgnoreCase("Buku Akademik")) {
+                        System.out.println("");
+                        System.out.println("Hasil Penulusaran Kami: \n");
+                        System.out.println(stokBukuAkademik);
+                    } else {
+                    System.out.println("\nMaaf,Buku tidak tersedia");
+                    }
 
                     break;
                 case 5:
@@ -231,7 +260,8 @@ public class Main {
 
 
                 } 
-                     System.out.println("Apakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
+                     System.out.println("\nApakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
+                     System.out.print("$>");
                     menu = input.nextInt();
 
                     switch (menu) {
@@ -240,10 +270,12 @@ public class Main {
                             break;
                         case 2:
                             exit = false;
-                            System.out.println("Terima kasih telah datang");
+                            System.out.print("\nTerima kasih telah datang");
+                            System.out.print(separator);
                             break;
                         default:
-                            System.out.println("Input yang anda masukkan salah");
+                        System.out.println("Input yang anda masukkan salah");
+                        System.out.print(separator);
                             break;
                     }
                 } while (exit);
