@@ -26,13 +26,17 @@ public class Main {
         int jumlahHalBuku1 = 21;
         String pengarangBuku1 = "Dede Firmansyah";
         String namaBuku2, pengarangBuku2;
-        int jumlahHalBuku2;
-        char inputValidate;
-        String buku, tipe;
-        byte kodeBuku;
+
+        int jumlahHalBuku2, validate;
+        boolean isLoop = true;
 
         // Variabel Cari Buku (Case 4)
         String cariBuku;
+      
+        // Variabel Meminjam buku digital (Case 5)
+        String buku, tipe;
+        byte kodeBuku;
+
 
         // Variabel inputan Username dan Password
         String username, password;
@@ -73,6 +77,8 @@ public class Main {
         if (canLogin) {
             // Tampilan Menu
             do {
+                isLoop = true;
+
             System.out.println(separator);
             System.out.println("Selamat Datang di Perpustakaan! (Under Development)\n");
 
@@ -190,31 +196,41 @@ public class Main {
                             System.out.println();
                             break;
                         case 3:
-                            input.nextLine();
-                            System.out.print("\nApakah anda yakin untuk menghapus data diatas? (Y/n)\n$> ");
-                            inputValidate = input.nextLine().charAt(0);
+                        while(isLoop){
+                                input.nextLine();
+                                System.out.print("\nApakah anda yakin untuk menghapus data diatas?\n1]Ya.\n2]Tidak\n$> ");
+                                validate = input.nextInt();
+                                switch(validate){
+                                    case 1:
+                                        namaBuku1 = "";
+                                        pengarangBuku1 = "";
+                                        jumlahHalBuku1 = 0;
 
-                            if (inputValidate != 'y' && inputValidate != 'Y') {
-                                System.out.println("\nAnda membatalkan penghapusan data..");
-                                return;
-                            } 
-                            
-                            namaBuku1 = "";
-                            pengarangBuku1 = "";
-                            jumlahHalBuku1 = 0;
-
-                            // Menampilkan list buku
-                            System.out.println("#List Buku (Tidak tersedia)");
-                            System.out.println("Nama Buku       : (kosong)");
-                            System.out.println("Pengarang       : (kosong)");
-                            System.out.println("Jumlah Halaman  : (kosong)");
-                            System.out.println();
-
+                                        // Menampilkan list buku
+                                        System.out.println("\n#List Buku (Tidak tersedia)");
+                                        System.out.println("Nama Buku       : (kosong)");
+                                        System.out.println("Pengarang       : (kosong)");
+                                        System.out.println("Jumlah Halaman  : (kosong)");
+                                        System.out.println();
+                                        
+                                        isLoop = false;
+                                        break;
+                                    case 2:
+                                        System.out.println("Penghapusan data dibatalkan!\n");
+                                        isLoop = false;
+                                        break;
+                                    default:
+                                        System.out.println("Input salah");
+                                        isLoop = true;
+                                }
+                            }
                             break;
                         case 0:
                             System.out.println("\nAnda membatalkan pemilihan...");
                             break;
                         default:
+                            System.out.println("Input anda salah...\n");
+                            break;
                     }
 
 
@@ -376,13 +392,15 @@ public class Main {
 
                     break;
                 default: // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
-                    System.out.println("Maaf Input anda tidak sesuai, program keluar");
+                    System.out.println("Maaf Input anda tidak sesuai...\n");
                     break;
 
 
                 } 
-                     System.out.println("\nApakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
-                     System.out.print("$>");
+
+                    System.out.println("\nApakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
+                    System.out.print("$>");
+              
                     menu = input.nextInt();
 
                     switch (menu) {
