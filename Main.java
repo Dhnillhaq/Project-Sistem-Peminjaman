@@ -234,6 +234,7 @@ public class Main {
                     }
                     break;
                 case 4:
+                    input.nextLine();
                     //  -Pencarian Buku
                     // *Sambutan
                       System.out.println(separator);
@@ -241,13 +242,13 @@ public class Main {
 
                     // User menentukan buku yang dicari
                     System.out.println("\nMasukkann buku yang ingin anda cari: ");
-                    System.out.print("$>");
+                    System.out.print("$> ");
                     cariBuku = input.next();
 
                     // Menampilkan buku sesuai inputan user
                     if (cariBuku.equalsIgnoreCase("Malin") || cariBuku.equalsIgnoreCase("Malin Kundang")) {
                         System.out.println("");
-                        System.out.println("Hasil Penulusaran Kami: \n");
+                        System.out.println("Hasil Penelusuran Kami: \n");
                         System.out.println(namaBuku1);
                         System.out.println(pengarangBuku1);
                         System.out.println(jumlahHalBuku1);
