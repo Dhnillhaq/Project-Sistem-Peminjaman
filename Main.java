@@ -73,7 +73,7 @@ public class Main {
         }
         // Jika salah
         else {
-            System.out.println("\nMaaf, tidak ada Username dengan password tersebut");
+            System.out.println("\nMaaf, tidak ada Username dengan password tersebut ");
         }
 
         if (canLogin) {
