@@ -263,6 +263,7 @@ public class Main {
 
                     break;
                 case 5:
+                input.nextLine();
                     //  -Meminjam Buku Digital
                 System.out.println(separator);
                 System.out.println("SELAMAT DATANG DI FITUR BUKU DIGITAL");
