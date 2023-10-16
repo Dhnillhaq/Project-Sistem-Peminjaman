@@ -1,7 +1,7 @@
 
 # Project-Sistem-Peminjaman 
 
-<img src="buku.jpg">
+<img src="buku.jpg" width="240">
 
 ![Static Badge](https://img.shields.io/badge/Type-Sistem%20Informasi-13e600) ![Static Badge](https://img.shields.io/badge/-Assignment-red) ![Static Badge](https://img.shields.io/badge/Total%20Team-3%20Human-4a92f0)
 
