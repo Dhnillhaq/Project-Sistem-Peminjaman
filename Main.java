@@ -17,10 +17,12 @@ public class Main {
 
         // Deklarasi Variabel
         // Variabel Pilih Menu dan Stok Buku (Case 1 & Case 2)
-        int pilihanInput, stokBukuAkademik = 10;
-        int pilihBuku;
+        String temaBuku1 = "Buku Akademik";
+        String temaBuku2 = "Buku Non-Akademik";
+        int pilihanInput, pilihBuku;
+        int stokBukuAkademik = 10;
+        int stokBukuNonAkademik = 20;
         
-
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
         String namaBuku1 = "Malin Kundang";
         int jumlahHalBuku1 = 21;
@@ -103,15 +105,17 @@ public class Main {
                     System.out.println("SELAMAT DATANG DI PEMINJAMAN BUKU\n");
 
                     // User menentukan jumlah peminjaman buku
-                    System.out.println("[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
-                    System.out.print("Jumlah buku yang ingin dipinjam?\n$> ");
+                    System.out.println("[stok " + stokBukuAkademik + "]");
+                    System.out.println(temaBuku1);
+                    System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
                     pilihBuku = input.nextInt();
 
                     // Melakukan pengurangan
                     stokBukuAkademik -= pilihBuku;
 
                     // Menampilkan hasil dari peminjaman
-                    System.out.println("\n[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
+                    System.out.println("\n[stok " + stokBukuAkademik + "]");
+                    System.out.println(temaBuku1);
                     break;
                 case 2:
                     //  -Pengembalian Buku 
@@ -120,16 +124,18 @@ public class Main {
                     System.out.println("SELAMAT DATANG DI PENGEMBALIAN BUKU\n");
 
                     // User menentukan jumlah pengembalian buku
-                    System.out.println("[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
-                    System.out.println("Jumlah buku yang ingin dikembalikan?");
-                    System.out.print("$>");
+                    System.out.println("[stok " + stokBukuAkademik + "]");
+                    System.out.println(temaBuku1);
+                    System.out.println("\nJumlah buku yang ingin dikembalikan?");
+                    System.out.print("$> ");
                     pilihBuku = input.nextInt();
 
                     // Melakukan Pengembalian Stok Sedia
                     stokBukuAkademik += pilihBuku;
 
                     // Menampilkan hasil dari pengembalian
-                    System.out.printf("\n[stok %d]\nBuku Akademik\n", stokBukuAkademik);
+                    System.out.printf("\n[stok %d]\n", stokBukuAkademik);
+                    System.out.println(temaBuku1);
 
 
                     
@@ -241,9 +247,9 @@ public class Main {
                       System.out.println("SELAMAT DATANG DI PENCARIAN BUKU");
 
                     // User menentukan buku yang dicari
-                    System.out.println("\nMasukkann buku yang ingin anda cari: ");
+                    System.out.println("\nMasukkan buku yang ingin anda cari: ");
                     System.out.print("$> ");
-                    cariBuku = input.next();
+                    cariBuku = input.nextLine();
 
                     // Menampilkan buku sesuai inputan user
                     if (cariBuku.equalsIgnoreCase("Malin") || cariBuku.equalsIgnoreCase("Malin Kundang")) {
@@ -252,12 +258,19 @@ public class Main {
                         System.out.println(namaBuku1);
                         System.out.println(pengarangBuku1);
                         System.out.println(jumlahHalBuku1);
-                    } else if (cariBuku.equalsIgnoreCase("Buku Akademik")) {
+                    } else if (cariBuku.equalsIgnoreCase("Buku Akademik") || cariBuku.equalsIgnoreCase("akademik")) {
                         System.out.println("");
                         System.out.println("Hasil Penulusaran Kami: \n");
-                        System.out.println(stokBukuAkademik);
+                        System.out.println("[stok "+stokBukuAkademik+ "]");
+                        System.out.println(temaBuku1);
+                    } else if (cariBuku.equalsIgnoreCase("Buku Non-Akademik") || (cariBuku.equalsIgnoreCase("Non-Akademik"))){
+                        System.out.println("");
+                        System.out.println("Hasil Penulusan Kami: \n");
+                        System.out.println("[stok " +stokBukuNonAkademik+ "]");
+                        System.out.println(temaBuku2);
                     } else {
-                    System.out.println("\nMaaf,Buku tidak tersedia");
+                        System.out.println("\nMaaf,Buku tidak tersedia");
+
                     }
 
                     break;
@@ -411,7 +424,7 @@ public class Main {
                 } 
 
                     System.out.println("\nApakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
-                    System.out.print("$>");
+                    System.out.print("$> ");
               
                     menu = input.nextInt();
 
