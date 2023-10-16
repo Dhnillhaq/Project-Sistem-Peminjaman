@@ -35,7 +35,7 @@ public class Main {
         String username, password;
 
         // Variabel UI
-        String separator = "\n\n-------------------------------------------------------";
+        String separator = "\n\n--------------------------------------------------------";
 
         // Variabel data Username
         String storedUsername = "Admin";
