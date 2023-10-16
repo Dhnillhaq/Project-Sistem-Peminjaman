@@ -217,6 +217,7 @@ public class Main {
                     break;
                 case 5:
                     //  - Buku Digital
+                input.nextLine();
                 System.out.println(separator);
                 System.out.println("SELAMAT DATANG DI FITUR BUKU DIGITAL");
                 System.out.println("Kami disini menyediakan beberapa buku yang dapat diakses melalui digital\n");
