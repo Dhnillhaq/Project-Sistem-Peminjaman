@@ -260,12 +260,12 @@ public class Main {
                         System.out.println(jumlahHalBuku1);
                     } else if (cariBuku.equalsIgnoreCase("Buku Akademik") || cariBuku.equalsIgnoreCase("akademik")) {
                         System.out.println("");
-                        System.out.println("Hasil Penulusaran Kami: \n");
+                        System.out.println("Hasil Penelusuran Kami: \n");
                         System.out.println("[stok "+stokBukuAkademik+ "]");
                         System.out.println(temaBuku1);
                     } else if (cariBuku.equalsIgnoreCase("Buku Non-Akademik") || (cariBuku.equalsIgnoreCase("Non-Akademik"))){
                         System.out.println("");
-                        System.out.println("Hasil Penulusan Kami: \n");
+                        System.out.println("Hasil Penelusuran Kami: \n");
                         System.out.println("[stok " +stokBukuNonAkademik+ "]");
                         System.out.println(temaBuku2);
                     } else {
