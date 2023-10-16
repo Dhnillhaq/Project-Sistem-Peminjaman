@@ -1,9 +1,9 @@
 
 # Project-Sistem-Peminjaman 
 
-![Static Badge](https://img.shields.io/badge/Type-Sistem%20Informasi-13e600) ![Static Badge](https://img.shields.io/badge/-Assignment-red) ![Static Badge](https://img.shields.io/badge/Total%20Team-3%20Human-4a92f0)
-
 <img src="buku.jpg">
+
+![Static Badge](https://img.shields.io/badge/Type-Sistem%20Informasi-13e600) ![Static Badge](https://img.shields.io/badge/-Assignment-red) ![Static Badge](https://img.shields.io/badge/Total%20Team-3%20Human-4a92f0)
 
 ### Halo👋
 
@@ -21,9 +21,9 @@ Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 - Peminjaman Buku
 - Pengembalian buku
 - Manajemen buku
-- Pencarian buku
+- Pencarian buku (On Progress)
 - Buku digital
-- Pengelolaan stok buku
+- Pengelolaan stok buku (On Progress)
 
 ---
 
