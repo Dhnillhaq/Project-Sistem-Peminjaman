@@ -11,8 +11,8 @@ Bahasa : Indonesia/English
 ---
 
 ### Deskripsi:
-Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 <p align="left"><img src="buku.jpg" width="240"></p>
+Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 
 ---
 
