@@ -17,10 +17,12 @@ public class Main {
 
         // Deklarasi Variabel
         // Variabel Pilih Menu dan Stok Buku (Case 1 & Case 2)
-        int pilihanInput, stokBukuAkademik = 10;
-        int pilihBuku;
+        String temaBuku1 = "Buku Akademik";
+        String temaBuku2 = "Buku Non-Akademik";
+        int pilihanInput, pilihBuku;
+        int stokBukuAkademik = 10;
+        int stokBukuNonAkademik = 20;
         
-
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
         String namaBuku1 = "Malin Kundang";
         int jumlahHalBuku1 = 21;
@@ -42,7 +44,7 @@ public class Main {
         String username, password;
 
         // Variabel UI
-        String separator = "\n\n-------------------------------------------------------";
+        String separator = "\n\n--------------------------------------------------------";
 
         // Variabel data Username
         String storedUsername = "Admin";
@@ -71,7 +73,7 @@ public class Main {
         }
         // Jika salah
         else {
-            System.out.println("\nMaaf, tidak ada Username dengan password tersebut");
+            System.out.println("\nMaaf, tidak ada Username dengan password tersebut ");
         }
 
         if (canLogin) {
@@ -103,15 +105,17 @@ public class Main {
                     System.out.println("SELAMAT DATANG DI PEMINJAMAN BUKU\n");
 
                     // User menentukan jumlah peminjaman buku
-                    System.out.println("[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
-                    System.out.print("Jumlah buku yang ingin dipinjam?\n$> ");
+                    System.out.println("[stok " + stokBukuAkademik + "]");
+                    System.out.println(temaBuku1);
+                    System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
                     pilihBuku = input.nextInt();
 
                     // Melakukan pengurangan
                     stokBukuAkademik -= pilihBuku;
 
                     // Menampilkan hasil dari peminjaman
-                    System.out.println("\n[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
+                    System.out.println("\n[stok " + stokBukuAkademik + "]");
+                    System.out.println(temaBuku1);
                     break;
                 case 2:
                     //  -Pengembalian Buku 
@@ -120,16 +124,18 @@ public class Main {
                     System.out.println("SELAMAT DATANG DI PENGEMBALIAN BUKU\n");
 
                     // User menentukan jumlah pengembalian buku
-                    System.out.println("[stok " + stokBukuAkademik + "]\nBuku Akademik\n");
-                    System.out.println("Jumlah buku yang ingin dikembalikan?");
-                    System.out.print("$>");
+                    System.out.println("[stok " + stokBukuAkademik + "]");
+                    System.out.println(temaBuku1);
+                    System.out.println("\nJumlah buku yang ingin dikembalikan?");
+                    System.out.print("$> ");
                     pilihBuku = input.nextInt();
 
                     // Melakukan Pengembalian Stok Sedia
                     stokBukuAkademik += pilihBuku;
 
                     // Menampilkan hasil dari pengembalian
-                    System.out.printf("\n[stok %d]\nBuku Akademik\n", stokBukuAkademik);
+                    System.out.printf("\n[stok %d]\n", stokBukuAkademik);
+                    System.out.println(temaBuku1);
 
 
                     
@@ -232,56 +238,68 @@ public class Main {
                             System.out.println("Input anda salah...\n");
                             break;
                     }
-
-
                     break;
                 case 4:
+                    input.nextLine();
                     //  -Pencarian Buku
                     // *Sambutan
                       System.out.println(separator);
                       System.out.println("SELAMAT DATANG DI PENCARIAN BUKU");
 
                     // User menentukan buku yang dicari
-                    System.out.println("\nMasukkann buku yang ingin anda cari: ");
-                    System.out.print("$>");
-                    cariBuku = input.next();
+                    System.out.println("\nMasukkan buku yang ingin anda cari: ");
+                    System.out.print("$> ");
+                    cariBuku = input.nextLine();
 
                     // Menampilkan buku sesuai inputan user
                     if (cariBuku.equalsIgnoreCase("Malin") || cariBuku.equalsIgnoreCase("Malin Kundang")) {
                         System.out.println("");
-                        System.out.println("Hasil Penulusaran Kami: \n");
+                        System.out.println("Hasil Penelusuran Kami: \n");
                         System.out.println(namaBuku1);
                         System.out.println(pengarangBuku1);
                         System.out.println(jumlahHalBuku1);
-                    } else if (cariBuku.equalsIgnoreCase("Buku Akademik")) {
+                    } else if (cariBuku.equalsIgnoreCase("Buku Akademik") || cariBuku.equalsIgnoreCase("akademik")) {
                         System.out.println("");
-                        System.out.println("Hasil Penulusaran Kami: \n");
-                        System.out.println(stokBukuAkademik);
+                        System.out.println("Hasil Penelusuran Kami: \n");
+                        System.out.println("[stok "+stokBukuAkademik+ "]");
+                        System.out.println(temaBuku1);
+                    } else if (cariBuku.equalsIgnoreCase("Buku Non-Akademik") || (cariBuku.equalsIgnoreCase("Non-Akademik"))){
+                        System.out.println("");
+                        System.out.println("Hasil Penelusuran Kami: \n");
+                        System.out.println("[stok " +stokBukuNonAkademik+ "]");
+                        System.out.println(temaBuku2);
                     } else {
-                    System.out.println("\nMaaf,Buku tidak tersedia");
+                        System.out.println("\nMaaf,Buku tidak tersedia");
+
                     }
 
                     break;
                 case 5:
+
+                    //  - Buku Digital
                 input.nextLine();
-                    //  -Meminjam Buku Digital
+
+
                 System.out.println(separator);
                 System.out.println("SELAMAT DATANG DI FITUR BUKU DIGITAL");
                 System.out.println("Kami disini menyediakan beberapa buku yang dapat diakses melalui digital\n");
-
+                
+                //Memasukkan inputan tipe buku
                 System.out.print("Masukkan tipe buku fiksi/nonfiksi : ");
                 buku = input.nextLine();
 
+                //Menampilkan daftar buku fiksi
                 if (buku.equalsIgnoreCase("fiksi")) {
                     System.out.println("DAFTAR BUKU FIKSI\n - Novel\n - Komik\n - Cerpen ");
-                    System.out.print("Masukkan tipe buku : ");
+                    System.out.print("Masukkan tipe buku : "); //Melakukan inputan tipe buku fiksi
                     tipe = input.nextLine();
+                    //Menampilkan daftar buku novel pada sistem
                     if (tipe.equalsIgnoreCase("novel")) {
                         System.out.println("Kami menyediakan beberapa buku novel,dengan beberapa judul yang diantaranya : ");
                         System.out.println("1. Negeri 5 Menara");
                         System.out.println("2. Perahu Kertas");
                         System.out.println("3. Bintang - Tere Liye");
-                        System.out.print("Masukkan nomor judul buku : ");
+                        System.out.print("Masukkan nomor judul buku : "); //Melakukan inputan judul buku novel
                         kodeBuku = input.nextByte();
                         if (kodeBuku == 1) {
                             System.out.println("https://drive.google.com/file/d/1f1JkVi5-IZt3jODtT50r9JnVy5WszdQv/view?usp=drive_link");
@@ -295,12 +313,13 @@ public class Main {
                         } else {
                             System.out.println("Maaf inputan yang dimasukkan salah");
                         } 
+                      //Menampilkan daftar buku komik pada sistem  
                     } else if (tipe.equalsIgnoreCase("komik")) {
                         System.out.println("Kami menyediakan beberapa buku komik,dengan beberapa judul yang diantaranya : ");
                         System.out.println("1. Naruto buku angin");
                         System.out.println("2. Naruto Chapter 698");
                         System.out.println("3. Si Juki Komik Strip");
-                        System.out.print("Masukkan nomor judul buku : ");
+                        System.out.print("Masukkan nomor judul buku : "); //Melakukan inputan judul buku komik
                         kodeBuku = input.nextByte();
                         if (kodeBuku == 1) {     
                             System.out.println("https://drive.google.com/file/d/15Dh6bsELgTN6iBo4cNRPZMcctJdN-il8/view?usp=sharing");
@@ -314,22 +333,27 @@ public class Main {
                         } else {
                             System.out.println("Maaf inputan yang dimasukkan salah");   
                         }
+                      //Menampilkan daftar buku cerpen pada sistem  
                     } else if (tipe.equalsIgnoreCase("cerpen")) {
+                    System.out.println("Kumupulan Cerpen-Cerpen");    
                     System.out.println("https://drive.google.com/file/d/1XOYJ_OgLgswpDtxy8Si1GRmrfxTaIc1g/view?usp=sharing");
                     System.out.println("Klik ctrl+klik/option+klik untuk mengakses buku");
                     } else {
                         System.out.println("Maaf inputan yang dimasukkan salah");
                     }
-                        
+                  
+                    //Menampilkan daftar buku nonfiksi
                 } else if (buku.equalsIgnoreCase("nonfiksi")) {
                     System.out.println("DAFTAR BUKU NONFIKSI\n - Majalah\n - Jurnal\n - Pendidikan\n");
-                    System.out.print("Masukkan tipe buku : ");
+                    System.out.print("Masukkan tipe buku : "); //Melakukan inputan tipe buku nonfiksi
                     tipe = input.nextLine();
+
+                    //Menampilkan daftar buku majalah pada sistem
                     if (tipe.equalsIgnoreCase("majalah")) {
                         System.out.println("Kami menyediakan beberapa buku majalah,dengan beberapa judul yang diantaranya : ");
                         System.out.println("1. Majalah Bobo 25 Maret 2021");
                         System.out.println("2. Majalah Pendis - Skema Pendanaan Pendidikan Islam");
-                        System.out.print("Masukkan nomor judul buku : ");
+                        System.out.print("Masukkan nomor judul buku : "); //Melakukan inputan judul buku majalah
                         kodeBuku = input.nextByte();
                         if (kodeBuku == 1) {     
                             System.out.println("https://library.trunojoyo.ac.id/files/epaper/Bobo/majalah%20BOBO%2020210325.pdf");
@@ -340,13 +364,14 @@ public class Main {
                         } else {
                             System.out.println("Maaf inputan yang dimasukkan salah"); 
                         }
-
+                      
+                        //Menampilkan daftar buku jurnal pada sistem
                     } else if (tipe.equalsIgnoreCase("Jurnal")) {
                         System.out.println("Kami menyediakan beberapa buku jurnal,dengan beberapa judul yang diantaranya : ");
                         System.out.println("1. Jurnal Teknik Informatika");
                         System.out.println("2. Jurnal Ekonomi");
                         System.out.println("3. Jurnal Teknik Sipil");
-                        System.out.print("Masukkan nomor judul buku : ");
+                        System.out.print("Masukkan nomor judul buku : "); //Melakukan inputan judul buku  jurnal
                         kodeBuku = input.nextByte();
                         if (kodeBuku == 1) {     
                             System.out.println("https://drive.google.com/file/d/11t6kE0qD6H3S144Drz6rifm6UBymz9lb/view?usp=sharing");
@@ -359,13 +384,14 @@ public class Main {
                             System.out.println("Klik ctrl+klik/option+klik untuk mengakses buku");
                         } else 
                             System.out.println("Maaf inputan yang dimasukkan salah"); 
-
+                      
+                            //Menampilkan daftar buku pendidikan pada sistem
                     } else if (tipe.equalsIgnoreCase("pendidikan")) {
                         System.out.println("Kami menyediakan beberapa buku jurnal,dengan beberapa judul yang diantaranya : ");
                         System.out.println("1. Buku Informatika Kelas XI");
                         System.out.println("2. Buku Informatika Kelas X");
                         System.out.println("3. Buku Teknik Sipil UI");
-                        System.out.print("Masukkan nomor judul buku : ");
+                        System.out.print("Masukkan nomor judul buku : "); //Melakukan inputan judul buku pendidikan
                         kodeBuku = input.nextByte();
                         if (kodeBuku == 1) {     
                             System.out.println("https://static.buku.kemdikbud.go.id/content/pdf/bukuteks/kurikulum21/Informatika-BS-KLS-XI.pdf");
@@ -384,8 +410,6 @@ public class Main {
                 } else {
                     System.out.println("Maaf pilihan tidak tersedia");
                 }
-
-        
                     break;
                 case 6:
                     //  -Mengelola Stok Buku
@@ -400,7 +424,7 @@ public class Main {
                 } 
 
                     System.out.println("\nApakah anda ingin kembali ke menu?\n1]Ya.\n2]Tidak ");
-                    System.out.print("$>");
+                    System.out.print("$> ");
               
                     menu = input.nextInt();
 
