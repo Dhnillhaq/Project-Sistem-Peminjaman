@@ -115,6 +115,7 @@ public class Main {
                         System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
                         pilihBuku = input.nextInt();
 
+
                         // Melakukan pengurangan
                         stokBukuAkademik -= pilihBuku;
 
