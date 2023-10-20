@@ -257,7 +257,7 @@ public class Main {
                         cariBuku = input.nextLine();
 
                         // Menampilkan buku sesuai inputan user
-                        if (cariBuku.equalsIgnoreCase("Malin") || cariBuku.equalsIgnoreCase("Malin Kundang")) {
+                        if (cariBuku.equalsIgnoreCase(namaBuku1)) {
                             System.out.println("");
                             System.out.println("Hasil Penelusuran Kami: \n");
                             System.out.println(namaBuku1);
