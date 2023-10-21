@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * Main
- * Deskripsi:   
+ * Deskripsi:    
  * Sesuai dengan namanya, Main.java dibuat sebagai PROGRAM UTAMA dari beberapa
  * file.
  * Program ini digunakan untuk memanggil Class-class lain yang berada di luar
