@@ -11,7 +11,7 @@ Bahasa : Indonesia/English
 ---
 
 ### Deskripsi:
-<p align="left"><img src="https://i.pinimg.com/564x/3f/4c/39/3f4c39b9d1d1f9dccd7ccd7588104988.jpg" width="240"></p>
+<p align="left"><img src="https://img.freepik.com/free-vector/gradient-glossary-illustration_23-2150290958.jpg?w=740&t=st=1698332497~exp=1698333097~hmac=633377e9962812b35da6650ea881e37ac9796fb56a72fefe8808727f4640646c" width="240"></p>
 Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 
 ---
