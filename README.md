@@ -17,7 +17,7 @@ Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 ---
 
 ### Fitur
-- Sistem Registrasi
+- Sistem Login
 - Peminjaman Buku
 - Pengembalian buku
 - Manajemen buku
