@@ -11,7 +11,7 @@ Language : Indonesia
 ---
 
 ### Description:
-<p align="left"><img src="buku.jpg" width="240"></p>
+<p align="left"><img src="https://i.pinimg.com/564x/3f/4c/39/3f4c39b9d1d1f9dccd7ccd7588104988.jpg" width="240"></p>
 Contains the Lending Information System, namely the Library.s
 
 ---
