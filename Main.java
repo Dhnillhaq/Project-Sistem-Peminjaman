@@ -12,10 +12,37 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // Deklarasi Scanner untuk input
+        // Deklarasi Scanner untuk input //
         Scanner input = new Scanner(System.in);
 
-        // Deklarasi Variabel
+
+        ////// Deklarasi Variabel //////
+
+        //// Variabel Login dan Register
+        int menuLogin;
+        boolean onMenuLogin = true;
+        String[][] userAccount = new String[10][2];
+        // Akun default yang sudah terdaftar
+        userAccount[0][0] = "Admin";
+        userAccount[0][1] = "admin";
+
+        userAccount[1][0] = "Aakhif";
+        userAccount[1][1] = "password123";
+        
+        userAccount[2][0] = "Danendra";
+        userAccount[2][1] = "danendrapassadhi";
+        
+        userAccount[3][0] = "Dhanil";
+        userAccount[3][1] = "yakul123";
+
+        // Variabel Login
+        String usernameInput, passInput;
+        boolean isAllowed = false, stillLogin = true;
+        // Variabel Register
+        String passConfirmation, regUsername = "", regPassword;
+        boolean doRegister = true, doConfirm = true;
+
+        
         // Variabel Pilih Menu dan Stok Buku (Case 1 & Case 2)
         String temaBuku1 = "Buku Akademik";
         String temaBuku2 = "Buku Non-Akademik";
@@ -40,53 +67,158 @@ public class Main {
         String buku, tipe;
         byte kodeBuku;
 
-        // Variabel inputan Username dan Password
-        String username, password;
-
         // Variabel UI
-        String separator = "\n\n--------------------------------------------------------";
+        String separator = "------------------------------------------------------------------------";
+        String esc = "\033[H\033[2J";
 
-        // Variabel data Username
-        String storedUsername = "Admin";
-
-        // Variabel data Password
-        String storedPassword = "admin";
-
-        // Variabel if true
+        // Variabel Masuk ke program utama
         boolean canLogin = false;
-        boolean exit = false;
-        boolean isLogin = false;
 
+        // Variabel Validasi Menu 
+        boolean exit = false;
         // Variabel kembali ke menu
         int menu;
 
         // WAJIB Login sebelum masuk
+        // do {
+        //     System.out.println("\nSilahkan verifikasi diri anda terlebih dahulu\n");
+        //     System.out.print("Username: ");
+        //     username = input.nextLine();
+        //     System.out.print("Password: ");
+        //     password = input.nextLine();
+
+        //     // Jika benar
+        //     if (username.equals(storedUsername)) {
+        //         if (password.equals(storedPassword))
+        //             canLogin = true;
+        //         isLogin = true;
+
+        //     }
+        //     // Jika salah
+        //     else {
+        //         System.out.println("\nMaaf, tidak ada Username dengan password tersebut.");
+        //         System.out.println("Coba lagi,");
+        //         isLogin = false;
+        //     }
+        // } while (!isLogin);
+
+        // LOGIN || REGISTER
         do {
             System.out.println("\nSilahkan verifikasi diri anda terlebih dahulu\n");
-            System.out.print("Username: ");
-            username = input.nextLine();
-            System.out.print("Password: ");
-            password = input.nextLine();
+            System.out.println("1] Login");
+            System.out.println("2] Register");
+            System.out.println("\n0] Exit Program");
+            System.out.print("\n$> ");
+            menuLogin = input.nextInt();
 
-            // Jika benar
-            if (username.equals(storedUsername)) {
-                if (password.equals(storedPassword))
-                    canLogin = true;
-                isLogin = true;
+            switch (menuLogin) {
+                case 1:
+                    input.nextLine();
+                    System.out.println(esc);
+                    System.out.println(separator);
+                    
+                    System.out.println("Silahkan LOGIN!\n");
+                    do {
+                        System.out.print("Username: ");
+                        usernameInput = input.nextLine();
+                        System.out.print("Password: ");
+                        passInput = input.nextLine();
 
+                        // Mengecek apakah username terdapat pada array
+                        for (int i = 0; i < userAccount.length; i++) {
+                           if (usernameInput.equals(userAccount[i][0]) && passInput.equals(userAccount[i][1])) {
+                                isAllowed = true;
+                           } 
+                        }
+
+                        // Jika dia benar maka bisa login, begitu pula sebaliknya
+                        if (isAllowed) {
+                            System.out.println("\nBerhasil login!");
+                            System.out.println("Selamat datang "+usernameInput);
+                            isAllowed = false; // Reset Allowed login to false
+                            stillLogin = false; // Keluar dari loop validasi login
+                            onMenuLogin = false; // Keluar dari loop Menu Login
+                            canLogin = true; // Diperbolehkan Login ke program utama
+                        } else {
+                            System.out.println("\nMaaf tidak ditemukan username dengan password tersebut\nSilahkan coba lagi!");
+                            stillLogin = true;
+                        }
+                    } while (stillLogin);
+    
+                    onMenuLogin = false;
+                    break;
+                case 2:
+                    input.nextLine();
+                    System.out.println(esc);
+                    System.out.println(separator);
+
+                    System.out.println("Silahkan REGISTER Akun baru!\n");
+                    do {
+                        System.out.print("Masukkan username baru: ");
+                        regUsername = input.nextLine();
+
+                        // Proses
+                        for (int i = 0; i < userAccount.length; i++) {
+                            if (regUsername.equals(userAccount[i][0])) {
+                                System.out.println("Maaf username sudah pernah digunakan\n");
+                                break;
+                            }
+                            if (i == userAccount.length - 1) {
+                                doRegister = false;
+                                break;
+                            }
+                        }
+                    } while (doRegister);
+                    doRegister = true; // Reset doRegister
+                    
+                    System.out.print("Masukkan password baru: ");
+                    regPassword = input.nextLine();
+
+                    do {
+                        System.out.print("\nKonfirmasi password: ");
+                        passConfirmation = input.nextLine();
+
+                        if (passConfirmation.equals(regPassword)) {
+                            doConfirm = false;
+                        } else {
+                            System.out.println("Password tidak cocok! Coba lagi.");
+                        }
+                    } while (doConfirm);
+                    doConfirm = true; // Reset doConfirm
+
+                    // Proses menyimpan username dan password baru ke array 
+                    System.out.println("Jumalh elemen = "+userAccount.length);
+                    for (int i = 0; i < userAccount.length; i++) {
+                        if (userAccount[i][0] == null) {
+                            userAccount[i][0] = regUsername;
+                            userAccount[i][1] = regPassword;
+                            break;
+                        }
+                    }
+                    System.out.println(esc);
+                    System.out.println(separator);
+                    System.out.println("Berhasil menambahkan user baru!");
+                    
+                    onMenuLogin = true;
+                    break;
+                case 0:
+                    System.out.println("\nProgram keluar...");
+                    return;
+                default:
+                    System.out.println(esc);
+                    System.out.println(separator);
+                    System.out.println("\nPilih sesuai menu!");
+                    onMenuLogin = true;
             }
-            // Jika salah
-            else {
-                System.out.println("\nMaaf, tidak ada Username dengan password tersebut.");
-                System.out.println("Coba lagi,");
-                isLogin = false;
-            }
-        } while (!isLogin);
+        } while (onMenuLogin);
+        
+
+        // Masuk ke program utama
         if (canLogin) {
             // Tampilan Menu
             do {
                 isLoop = true;
-
+                System.out.println(esc);
                 System.out.println(separator);
                 System.out.println("Selamat Datang di Perpustakaan! (Under Development)\n");
 
@@ -107,6 +239,7 @@ public class Main {
                     case 1:
                         // -Peminjaman Buku
                         // Sambutan
+                        System.out.println(esc);
                         System.out.println(separator);
                         System.out.println("SELAMAT DATANG DI PEMINJAMAN BUKU\n");
 
@@ -127,6 +260,7 @@ public class Main {
                     case 2:
                         // -Pengembalian Buku
                         // Sambutan
+                        System.out.println(esc);
                         System.out.println(separator);
                         System.out.println("SELAMAT DATANG DI PENGEMBALIAN BUKU\n");
 
@@ -147,6 +281,7 @@ public class Main {
                         break;
                     case 3:
                         // -Manajemen Buku
+                        System.out.println(esc);
                         System.out.println(separator);
                         System.out.println("SELAMAT DATANG DI MANAJEMEN BUKU\n");
 
@@ -286,6 +421,7 @@ public class Main {
                         input.nextLine();
                         // -Pencarian Buku
                         // *Sambutan
+                        System.out.println(esc);
                         System.out.println(separator);
                         System.out.println("SELAMAT DATANG DI PENCARIAN BUKU");
 
@@ -311,6 +447,7 @@ public class Main {
                         // - Buku Digital
                         input.nextLine();
 
+                        System.out.println(esc);
                         System.out.println(separator);
                         System.out.println("SELAMAT DATANG DI FITUR BUKU DIGITAL");
                         System.out
@@ -487,12 +624,13 @@ public class Main {
                         break;
                     case 2:
                         exit = false;
-                        System.out.print("\nTerima kasih telah datang");
-                        System.out.print(separator);
+                        System.out.print("\n"+separator);
+                        System.out.println("\nTerima kasih telah datang\n");
                         break;
                     default:
-                        System.out.println("Input yang anda masukkan salah");
+                        System.out.println(esc);
                         System.out.print(separator);
+                        System.out.println("Input yang anda masukkan salah");
                         break;
                 }
             } while (exit);
