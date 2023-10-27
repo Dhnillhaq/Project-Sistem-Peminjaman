@@ -49,12 +49,9 @@ public class Main {
         int pilihanInput, pilihBuku;
         int stokBukuAkademik = 10;
         int stokBukuNonAkademik = 20;
+        boolean isMinjam = true;
 
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
-        String namaBuku1 = "Malin Kundang";
-        int jumlahHalBuku1 = 21;
-        String pengarangBuku1 = "Dede Firmansyah";
-        String namaBuku2, pengarangBuku2;
         int availableSlot = 0, noBuku;
         // Using array 2 dimensi
         // Index 0 = Nama Buku
@@ -270,12 +267,19 @@ public class Main {
                             // User menentukan jumlah peminjaman buku
                             System.out.println("[stok " + stokBukuAkademik + "]");
                             System.out.println(temaBuku1);
-                            System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                            pilihBuku = input.nextInt();
-
-
-                            // Melakukan pengurangan
-                            stokBukuAkademik -= pilihBuku;
+                            do {
+                                System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
+                                pilihBuku = input.nextInt();
+    
+                                if (pilihBuku <= stokBukuAkademik) {
+                                    // Melakukan pengurangan
+                                    stokBukuAkademik -= pilihBuku;
+                                    isMinjam = false;
+                                } else {
+                                    System.out.println("Input anda lebih  besar dari stock yang kita punya!");
+                                    isMinjam = true;
+                                }
+                            } while (isMinjam);
 
                             // Menampilkan hasil dari peminjaman
                             System.out.println("\n[stok " + stokBukuAkademik + "]");
