@@ -17,13 +17,13 @@ Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 ---
 
 ### Fitur
-- Sistem Login
-- Peminjaman Buku
-- Pengembalian buku
-- Manajemen buku
-- Pencarian buku (On Progress)
-- Buku digital
-- Pengelolaan stok buku (On Progress)
+- 🔒 Sistem Login
+- 🤝 Peminjaman Buku
+- 🔙 Pengembalian buku
+- 📊 Manajemen buku
+- 🔍 Pencarian buku (On Progress)
+- 📱 Buku digital
+- 📦 Pengelolaan stok buku (On Progress)
 
 ---
 
