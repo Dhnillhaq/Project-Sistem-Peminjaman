@@ -49,12 +49,27 @@ public class Main {
         int pilihanInput, pilihBuku;
         int stokBukuAkademik = 10;
         int stokBukuNonAkademik = 20;
+        boolean isMinjam = true;
 
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
-        String namaBuku1 = "Malin Kundang";
-        int jumlahHalBuku1 = 21;
-        String pengarangBuku1 = "Dede Firmansyah";
-        String namaBuku2, pengarangBuku2;
+        int availableSlot = 0, noBuku;
+        // Using array 2 dimensi
+        // Index 0 = Nama Buku
+        // Index 1 = Halaman
+        // Index 2 = Pengarang
+        String[][] listBuku = new String[15][3];
+        listBuku[0][0] = "Malin Kundang";
+        listBuku[0][1] = "18";
+        listBuku[0][2] = "Dede Firmansyah";
+        
+        listBuku[1][0] = "Negeri 5 Menara";
+        listBuku[1][1] = "13";
+        listBuku[1][2] = "Ahmad Fuadi";
+        
+        listBuku[2][0] = "Perahu Kertas";
+        listBuku[2][1] = "38";
+        listBuku[2][2] = "Dewi Lestari";
+        
 
         int jumlahHalBuku2, validate;
         boolean isLoop = true;
@@ -252,12 +267,19 @@ public class Main {
                             // User menentukan jumlah peminjaman buku
                             System.out.println("[stok " + stokBukuAkademik + "]");
                             System.out.println(temaBuku1);
-                            System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                            pilihBuku = input.nextInt();
-
-
-                            // Melakukan pengurangan
-                            stokBukuAkademik -= pilihBuku;
+                            do {
+                                System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
+                                pilihBuku = input.nextInt();
+    
+                                if (pilihBuku <= stokBukuAkademik) {
+                                    // Melakukan pengurangan
+                                    stokBukuAkademik -= pilihBuku;
+                                    isMinjam = false;
+                                } else {
+                                    System.out.println("Input anda lebih  besar dari stock yang kita punya!");
+                                    isMinjam = true;
+                                }
+                            } while (isMinjam);
 
                             // Menampilkan hasil dari peminjaman
                             System.out.println("\n[stok " + stokBukuAkademik + "]");
@@ -292,84 +314,133 @@ public class Main {
                             System.out.println("SELAMAT DATANG DI MANAJEMEN BUKU\n");
 
                             // Menampilkan list buku
-                            System.out.println("#List Buku");
-                            System.out.println("Nama Buku: " + namaBuku1);
-                            System.out.println("Pengarang: " + pengarangBuku1);
-                            System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
+                            System.out.println("# LIST BUKU #");
+                            System.out.println("--------------------------------------");
+                            // System.out.println("Nama Buku: " + namaBuku1);
+                            // System.out.println("Pengarang: " + pengarangBuku1);
+                            // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
+                            for (int i = 0; i < listBuku.length; i++) {
+                                if (listBuku[i][0] != null) {
+                                    System.out.println("------------------");
+                                    System.out.println("| NOMOR BUKU = "+(i+1)+" |");
+                                    System.out.println("-------------------------------------");
+                                    System.out.println("Nama Buku: " + listBuku[i][0]);
+                                    System.out.println("Jumlah Halaman: " + listBuku[i][1]);
+                                    System.out.println("Pengarang: "+ listBuku[i][2]);
+                                    System.out.println("--------------------------------------\n");
+                                }
+                            }
 
                             // Menanyakan apakah ingin mengubah/menambahkan/menghapus buku?
                             System.out.println(
-                                    "\n1] Menambahkan Buku Baru\n2] Mengubah Buku\n3] Menghapus Buku\n0] Batalkan ");
+                                    "\n1] Menambahkan Buku Baru\n2] Mengubah Buku\n3] Menghapus Buku\n\n0] Batalkan ");
                             System.out.print("\nApakah anda ingin melakukan sesuatu dengan data buku tersebut?\n$> ");
                             pilihanInput = input.nextInt();
 
                             // Switch Case jika memilih
                             switch (pilihanInput) {
                                 case 1:
+                                    // Cek index yang kosong 
+                                    for (int i = 0; i < listBuku.length; i++) {
+                                        if (listBuku[i][0] == null) {
+                                            availableSlot = i;
+                                            break;
+                                        }
+                                    }
+
                                     input.nextLine();
                                     System.out.println("\n---MENAMBAHKAN BUKU BARU---");
                                     System.out.print("Nama Buku     : ");
-                                    namaBuku2 = input.nextLine();
-                                    System.out.print("Pengarang     : ");
-                                    pengarangBuku2 = input.nextLine();
+                                    listBuku[availableSlot][0] = input.nextLine();
                                     System.out.print("Jumlah Halaman: ");
-                                    jumlahHalBuku2 = input.nextInt();
+                                    listBuku[availableSlot][1] = input.nextLine();
+                                    System.out.print("Pengarang     : ");
+                                    listBuku[availableSlot][2] = input.nextLine();
 
                                     System.out.println("\nDATA BERHASIL DITAMBAHKAN!\n");
 
                                     // Menampilkan list buku
-                                    System.out.println("#List Buku");
-                                    System.out.println("Nama Buku       : " + namaBuku1);
-                                    System.out.println("Pengarang       : " + pengarangBuku1);
-                                    System.out.println("Jumlah Halaman  : " + jumlahHalBuku1);
-                                    System.out.println();
-                                    System.out.println("Nama Buku       : " + namaBuku2 + " (New Added)");
-                                    System.out.println("Pengarang       : " + pengarangBuku2);
-                                    System.out.println("Jumlah Halaman  : " + jumlahHalBuku2);
-                                    System.out.println();
+                                    System.out.println("# LIST BUKU #");
+                                    System.out.println("--------------------------------------");
+                                    // System.out.println("Nama Buku: " + namaBuku1);
+                                    // System.out.println("Pengarang: " + pengarangBuku1);
+                                    // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
+                                    for (int i = 0; i < listBuku.length; i++) {
+                                        if (listBuku[i][0] != null) {
+                                            System.out.println("Nama Buku: " + listBuku[i][0]);
+                                            System.out.println("Jumlah Halaman: " + listBuku[i][1]);
+                                            System.out.println("Pengarang: "+ listBuku[i][2]);
+                                            System.out.println("--------------------------------------");
+                                        }
+                                    }
+
                                     break;
                                 case 2:
                                     input.nextLine();
                                     System.out.println("\n---MENGUBAH BUKU---");
+                                    System.out.print("Masukkan NOMOR BUKU yang akan diubah: ");
+                                    noBuku = input.nextInt();
+                                    
+                                    input.nextLine();
+                                    System.out.println("\nEdit data Buku...");
                                     System.out.print("Nama Buku     : ");
-                                    namaBuku1 = input.nextLine();
-                                    System.out.print("Pengarang     : ");
-                                    pengarangBuku1 = input.nextLine();
+                                    listBuku[noBuku-1][0] = input.nextLine();
                                     System.out.print("Jumlah Halaman: ");
-                                    jumlahHalBuku1 = input.nextInt();
+                                    listBuku[noBuku-1][1] = input.nextLine();
+                                    System.out.print("Pengarang     : ");
+                                    listBuku[noBuku-1][2] = input.nextLine();
 
                                     System.out.println("\nDATA BERHASIL DIUBAH\n");
 
                                     // Menampilkan list buku
-                                    System.out.println("#List Buku");
-                                    System.out.println("Nama Buku       : " + namaBuku1);
-                                    System.out.println("Pengarang       : " + pengarangBuku1);
-                                    System.out.println("Jumlah Halaman  : " + jumlahHalBuku1);
-                                    System.out.println();
+                                    System.out.println("# LIST BUKU #");
+                                    System.out.println("--------------------------------------");
+                                    // System.out.println("Nama Buku: " + namaBuku1);
+                                    // System.out.println("Pengarang: " + pengarangBuku1);
+                                    // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
+                                    for (int i = 0; i < listBuku.length; i++) {
+                                        if (listBuku[i][0] != null) {
+                                            System.out.println("Nama Buku: " + listBuku[i][0]);
+                                            System.out.println("Jumlah Halaman: " + listBuku[i][1]);
+                                            System.out.println("Pengarang: "+ listBuku[i][2]);
+                                            System.out.println("--------------------------------------");
+                                        }
+                                    }
                                     break;
                                 case 3:
                                     while (isLoop) {
                                         input.nextLine();
-                                        System.out.print(
-                                                "\nApakah anda yakin untuk menghapus data diatas?\n1]Ya.\n2]Tidak\n$> ");
+                                        System.out.println("\n---MENGHAPUS BUKU---");
+                                        System.out.print("Masukkan NOMOR BUKU yang akan dihapus: ");
+                                        noBuku = input.nextInt();
+
+                                        System.out.print( "\nApakah anda yakin untuk menghapus data diatas?\n1]Ya.\n2]Tidak\n$> ");
                                         validate = input.nextInt();
                                         switch (validate) {
                                             case 1:
-                                                namaBuku1 = "";
-                                                pengarangBuku1 = "";
-                                                jumlahHalBuku1 = 0;
+                                                // Menghapus buku
+                                                listBuku[noBuku-1][0] = null;
+                                                listBuku[noBuku-1][1] = null;
+                                                listBuku[noBuku-1][2] = null;
 
                                                 // Menampilkan list buku
-                                                System.out.println("\n#List Buku (Tidak tersedia)");
-                                                System.out.println("Nama Buku       : (kosong)");
-                                                System.out.println("Pengarang       : (kosong)");
-                                                System.out.println("Jumlah Halaman  : (kosong)");
-                                                System.out.println();
-
+                                                System.out.println("# LIST BUKU #");
+                                                System.out.println("--------------------------------------");
+                                                // System.out.println("Nama Buku: " + namaBuku1);
+                                                // System.out.println("Pengarang: " + pengarangBuku1);
+                                                // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
+                                                for (int i = 0; i < listBuku.length; i++) {
+                                                    if (listBuku[i][0] != null) {
+                                                        System.out.println("Nama Buku: " + listBuku[i][0]);
+                                                        System.out.println("Jumlah Halaman: " + listBuku[i][1]);
+                                                        System.out.println("Pengarang: "+ listBuku[i][2]);
+                                                        System.out.println("--------------------------------------");
+                                                    }
+                                                }
                                                 isLoop = false;
                                                 break;
                                             case 2:
-                                                System.out.println("Penghapusan data dibatalkan!\n");
+                                                System.out.println("\nPenghapusan data dibatalkan!\n");
                                                 isLoop = false;
                                                 break;
                                             default:
