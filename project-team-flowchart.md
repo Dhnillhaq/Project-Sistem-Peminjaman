@@ -70,17 +70,17 @@ flowchart TD
         0] Batalkan
     "]
     %% Batalkan
-    MenuManajemenBuku --if 0--> Point((" "))
+    MenuManajemenBuku -- if 0 --> Point((" "))
     %% Menambah Buku Baru
-    MenuManajemenBuku --> MenambahBukuBaru["Do - Menambah Buku Baru"]
+    MenuManajemenBuku -- if 1 --> MenambahBukuBaru["Do - Menambah Buku Baru"]
     MenambahBukuBaru --> ListBukuFinal["List Buku (update)"]
     ListBukuFinal --> Point((" "))
     %%Mengubah Buku
-    MenuManajemenBuku --> MengubahBuku["Do - Mengubah Buku"]
+    MenuManajemenBuku -- if 2 --> MengubahBuku["Do - Mengubah Buku"]
     MengubahBuku --> ListBukuFinal2["List Buku (update)"]
     ListBukuFinal2 --> Point((" "))
     %%Menghapus Buku
-    MenuManajemenBuku --> MenghapusBuku["Do - Menghapus Buku"]
+    MenuManajemenBuku -- if 3 --> MenghapusBuku["Do - Menghapus Buku"]
     MenghapusBuku --> ListBukuFinal3["List Buku (update)"]
     ListBukuFinal3 --> Point((" "))
     
