@@ -14,7 +14,8 @@
 ## 🗺️Flowchart
 
 ```mermaid
-    flowchart TD
+
+flowchart TD
     START(["START"]) --> DecLogReg["
         Verification
         1] Login
@@ -24,14 +25,14 @@
     "]
 
     %% 0] Exit Program
-    DecLogReg --|0|--> END(["END"])
+    DecLogReg --if 0--> END(["END"])
 
     %% 2] Register
-    DecLogReg --|2|--> Register["Do Register"]
+    DecLogReg --if 2--> Register["Do Register"]
     Register --> Login
 
     %% 1] Login
-    DecLogReg --|1|--> Login["Do Login"]
+    DecLogReg --if 1--> Login["Do Login"]
     Login --> Menu["Menu:
         1] Peminjaman Buku
         2] Pengembalian Buku
