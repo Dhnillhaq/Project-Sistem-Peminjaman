@@ -94,29 +94,6 @@ public class Main {
         // Variabel kembali ke menu
         int menu;
 
-        // WAJIB Login sebelum masuk
-        // do {
-        //     System.out.println("\nSilahkan verifikasi diri anda terlebih dahulu\n");
-        //     System.out.print("Username: ");
-        //     username = input.nextLine();
-        //     System.out.print("Password: ");
-        //     password = input.nextLine();
-
-        //     // Jika benar
-        //     if (username.equals(storedUsername)) {
-        //         if (password.equals(storedPassword))
-        //             canLogin = true;
-        //         isLogin = true;
-
-        //     }
-        //     // Jika salah
-        //     else {
-        //         System.out.println("\nMaaf, tidak ada Username dengan password tersebut.");
-        //         System.out.println("Coba lagi,");
-        //         isLogin = false;
-        //     }
-        // } while (!isLogin);
-
         do {
             toLogin = false;
             // LOGIN || REGISTER
@@ -316,9 +293,6 @@ public class Main {
                             // Menampilkan list buku
                             System.out.println("# LIST BUKU #");
                             System.out.println("--------------------------------------");
-                            // System.out.println("Nama Buku: " + namaBuku1);
-                            // System.out.println("Pengarang: " + pengarangBuku1);
-                            // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
                             for (int i = 0; i < listBuku.length; i++) {
                                 if (listBuku[i][0] != null) {
                                     System.out.println("------------------");
@@ -362,9 +336,6 @@ public class Main {
                                     // Menampilkan list buku
                                     System.out.println("# LIST BUKU #");
                                     System.out.println("--------------------------------------");
-                                    // System.out.println("Nama Buku: " + namaBuku1);
-                                    // System.out.println("Pengarang: " + pengarangBuku1);
-                                    // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
                                     for (int i = 0; i < listBuku.length; i++) {
                                         if (listBuku[i][0] != null) {
                                             System.out.println("Nama Buku: " + listBuku[i][0]);
@@ -395,9 +366,6 @@ public class Main {
                                     // Menampilkan list buku
                                     System.out.println("# LIST BUKU #");
                                     System.out.println("--------------------------------------");
-                                    // System.out.println("Nama Buku: " + namaBuku1);
-                                    // System.out.println("Pengarang: " + pengarangBuku1);
-                                    // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
                                     for (int i = 0; i < listBuku.length; i++) {
                                         if (listBuku[i][0] != null) {
                                             System.out.println("Nama Buku: " + listBuku[i][0]);
@@ -426,9 +394,6 @@ public class Main {
                                                 // Menampilkan list buku
                                                 System.out.println("# LIST BUKU #");
                                                 System.out.println("--------------------------------------");
-                                                // System.out.println("Nama Buku: " + namaBuku1);
-                                                // System.out.println("Pengarang: " + pengarangBuku1);
-                                                // System.out.println("Jumlah Halaman: " + jumlahHalBuku1);
                                                 for (int i = 0; i < listBuku.length; i++) {
                                                     if (listBuku[i][0] != null) {
                                                         System.out.println("Nama Buku: " + listBuku[i][0]);
