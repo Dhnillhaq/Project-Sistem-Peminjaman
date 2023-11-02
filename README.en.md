@@ -17,16 +17,18 @@ Contains the Lending Information System, namely the Library.
 ---
 
 ### Feature
-- Login System
-- Book Lending
-- Book Return
-- Book Management
-- Book Search Feature
-- Digital Book
-- Book Stock Management
+- 🔒 Login System
+- 🤝 Book Lending
+- 🔙 Book Return
+- 📊 Book Management
+- 🔍 Book Search Feature
+- 📱 Digital Book
+- 📦 Book Stock Management
+
 
 ---
 
+<br>
 
 > __Contributor__ 
 > `NIM` FULL NAME
@@ -35,11 +37,12 @@ Contains the Lending Information System, namely the Library.
 - `2341720133` MUHAMMAD DHIA RAMADHANIL HAQ
 ---
 
+<br>
 
+## [🗺️ Check out the Flowchart!](./project-team-flowchart.md)
+## [🔁 Back to Original Language [Bahasa Indonesia]](./README.md)
 
-### Back to Original Language
-- [Indonesia](./README.md)
-
+<br>
 
 # Use
 [![My Skills](https://skillicons.dev/icons?i=java,vscode,git,figma)]()

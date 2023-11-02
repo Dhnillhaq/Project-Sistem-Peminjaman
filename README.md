@@ -17,13 +17,13 @@ Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 ---
 
 ### Fitur
-- Sistem Login
-- Peminjaman Buku
-- Pengembalian buku
-- Manajemen buku
-- Pencarian buku (On Progress)
-- Buku digital
-- Pengelolaan stok buku (On Progress)
+- 🔒 Sistem Login
+- 🤝 Peminjaman Buku
+- 🔙 Pengembalian buku
+- 📊 Manajemen buku
+- 🔍 Pencarian buku (On Progress)
+- 📱 Buku digital
+- 📦 Pengelolaan stok buku (On Progress)
 
 ---
 
@@ -35,11 +35,12 @@ Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 - `2341720133` MUHAMMAD DHIA RAMADHANIL HAQ
 ---
 
+<br>
 
+## [🗺️ Lihat Flowchartnya!](./project-team-flowchart.md)
+## [🔁 Translate this page! [English]](./README.en.md)
 
-### Translation for this README
-- [English](./README.en.md)
-
+<br>
 
 # Use
 [![My Skills](https://skillicons.dev/icons?i=java,vscode,git,figma)]()
