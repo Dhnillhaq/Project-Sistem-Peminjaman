@@ -51,13 +51,17 @@ flowchart TD
 
     %% 1] Peminjaman Buku
     Menu -- if 1 --> PeminjamanBuku["Peminjaman Buku"]
-    PeminjamanBuku --> UnknownPeminjaman["Unknown (?)"]
-    UnknownPeminjaman --> Point((" "))
+    PeminjamanBuku --> JumlahStockAwal["Menampilkan Jumlah Stock Awal"]
+    JumlahStockAwal --> InputJumlahMeminjam["Input Jumlah Meminjam Buku"]
+    InputJumlahMeminjam --> JumlahStockAkhir["Menampilkan jumlah Stock Akhir"]
+    JumlahStockAkhir --> Point((" "))
 
     %% 2] Pengembalian Buku
     Menu -- if 2 --> PengembalianBuku["Pengembalian Buku"]
-    PengembalianBuku --> UnknownPengembalian["Unknown (?)"]
-    UnknownPengembalian --> Point((" "))
+    PengembalianBuku --> JumlahStockAwal2["Menampilkan Jumlah Stock Awal"]
+    JumlahStockAwal2 --> InputJumlahMengembalikan["Input Jumlah Pengembalian Buku"]
+    InputJumlahMengembalikan --> JumlahStockAkhir2["Menampilkan jumlah Stock Akhir"]
+    JumlahStockAkhir2 --> Point((" "))
 
     %% 3] Manajemen Buku
     Menu -- if 3 --> ManajemenBuku["Manajemen Buku"]
@@ -69,30 +73,33 @@ flowchart TD
 
         0] Batalkan
     "]
-    %% Batalkan
-    MenuManajemenBuku -- if 0 --> Point((" "))
-    %% Menambah Buku Baru
-    MenuManajemenBuku -- if 1 --> MenambahBukuBaru["Do - Menambah Buku Baru"]
-    MenambahBukuBaru --> ListBukuFinal["List Buku (update)"]
-    ListBukuFinal --> Point((" "))
-    %%Mengubah Buku
-    MenuManajemenBuku -- if 2 --> MengubahBuku["Do - Mengubah Buku"]
-    MengubahBuku --> ListBukuFinal2["List Buku (update)"]
-    ListBukuFinal2 --> Point((" "))
-    %%Menghapus Buku
-    MenuManajemenBuku -- if 3 --> MenghapusBuku["Do - Menghapus Buku"]
-    MenghapusBuku --> ListBukuFinal3["List Buku (update)"]
-    ListBukuFinal3 --> Point((" "))
+        %% Batalkan
+        MenuManajemenBuku -- if 0 --> Point((" "))
+        %% Menambah Buku Baru
+        MenuManajemenBuku -- if 1 --> MenambahBukuBaru["Do - Menambah Buku Baru"]
+        MenambahBukuBaru --> ListBukuFinal["List Buku (update)"]
+        ListBukuFinal --> Point((" "))
+        %%Mengubah Buku
+        MenuManajemenBuku -- if 2 --> MengubahBuku["Do - Mengubah Buku"]
+        MengubahBuku --> ListBukuFinal2["List Buku (update)"]
+        ListBukuFinal2 --> Point((" "))
+        %%Menghapus Buku
+        MenuManajemenBuku -- if 3 --> MenghapusBuku["Do - Menghapus Buku"]
+        MenghapusBuku --> ListBukuFinal3["List Buku (update)"]
+        ListBukuFinal3 --> Point((" "))
     
     %% 4] Pencarian Buku
     Menu -- if 4 --> PencarianBuku["Pencarian Buku"]
-    PencarianBuku --> UnknownPencarian["Unknown (?)"]
-    UnknownPencarian --> Point((" "))
+    PencarianBuku --> MencariBuku["Do - Mencari Buku"]
+    MencariBuku --> HasilBukuTemuan["Menampilkan Hasil Buku"]
+    HasilBukuTemuan --> Point((" "))
 
     %% 5] Buku Digital
     Menu -- if 5 --> BukuDigital["Buku Digital"]
-    BukuDigital --> UnknownBukuDigital["Unknown (?)"]
-    UnknownBukuDigital --> Point((" "))
+    BukuDigital --> MeanmpilkanTipeBuku["Menampilkan Tipe Buku"]
+    MeanmpilkanTipeBuku -->  MemilihTipeBuku["Memilih Tipe Buku"]
+    MemilihTipeBuku --> TampilkananBuku["Menampilkan Buku Berupa wujud Link"]
+    TampilkananBuku --> Point((" "))
     
     %% 6] Pengelolaan Stok Buku
     Menu -- if 6 --> PengelolaanStockBuku["Pengelolaan Stock Buku"]
