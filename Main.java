@@ -57,18 +57,21 @@ public class Main {
         // Index 0 = Nama Buku
         // Index 1 = Halaman
         // Index 2 = Pengarang
-        String[][] listBuku = new String[15][3];
+        String[][] listBuku = new String[15][4];
         listBuku[0][0] = "Malin Kundang";
         listBuku[0][1] = "18";
         listBuku[0][2] = "Dede Firmansyah";
+        listBuku[0][3] = "5";
         
         listBuku[1][0] = "Negeri 5 Menara";
         listBuku[1][1] = "13";
         listBuku[1][2] = "Ahmad Fuadi";
+        listBuku[1][3] = "3";
         
         listBuku[2][0] = "Perahu Kertas";
         listBuku[2][1] = "38";
         listBuku[2][2] = "Dewi Lestari";
+        listBuku[2][3] = "7";
         
 
         int jumlahHalBuku2, validate;
