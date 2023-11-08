@@ -270,7 +270,7 @@ public class Main {
 
                                     break;
                                 case 2:// Peminjaman Buku Non-Akademik
-                                    // Sambutan
+                                       // Sambutan
                                     System.out.println(esc);
                                     System.out.println(temaBuku[1]);
                                     System.out.println("[Stok tersedia = " + stokAwal[1] + "]");
@@ -504,9 +504,10 @@ public class Main {
                             cariBuku = input.nextLine();
 
                             // Proses pencarian
-                            for (int i = 0; i < arrayListBuku.length; i++) {
-                                if (cariBuku.equalsIgnoreCase(arrayListBuku[i])) {
-                                    result = "\nJudul buku ditemukan!\n---------------\n" + arrayListBuku[i];
+                            for (int i = 0; i < listBuku.length; i++) {
+                                if (cariBuku.equalsIgnoreCase(listBuku[i][0])) {
+                                    result = "\nJudul buku ditemukan!\n---------------\n" + listBuku[i][0] + "\n" +
+                                            listBuku[i][1] + "\n" + listBuku[i][2];
                                     break;
                                 } else {
                                     result = "\nMaaf,Buku tidak tersedia\n---------------\n*kosong";
