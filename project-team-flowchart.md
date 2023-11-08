@@ -9,7 +9,7 @@
 - Danendra Nayaka Passadhi
 - Muhammad Dhia Ramadhanil Haq
 
-### [⬅️Back to Repo](https://github.com/Khip01/Project-Sistem-Peminjaman)
+### [⬅️Back to Repo](../../)
 
 <br>
 
