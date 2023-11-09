@@ -50,25 +50,52 @@ public class Main {
 
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
         int availableSlot = 0, noBuku;
+        String sortir = "Semua", jenisBuku;
+        boolean isMistake = true;
         // Using array 2 dimensi
         // Index 0 = Nama Buku
         // Index 1 = Halaman
         // Index 2 = Pengarang
-        String[][] listBuku = new String[15][4];
-        listBuku[0][0] = "Malin Kundang";
-        listBuku[0][1] = "18";
-        listBuku[0][2] = "Dede Firmansyah";
-        listBuku[0][3] = "5";
+        // Index 3 = Tema Buku
+        // Index 4 = Nomor Buku (Primary Key/Kunci)
+        String[][] listBuku = new String[15][5];
+        //  3 Buku Non Akademik dan 3 Buku Akademik Awal
+        listBuku[0][0] = "Metode Penelitian Kualitatif";
+        listBuku[0][1] = "312";
+        listBuku[0][2] = "M. Nazir";
+        listBuku[0][3] = "Akademik";
+        listBuku[0][4] = "1";
         
-        listBuku[1][0] = "Negeri 5 Menara";
-        listBuku[1][1] = "13";
-        listBuku[1][2] = "Ahmad Fuadi";
-        listBuku[1][3] = "3";
+        listBuku[1][0] = "Ayat-Ayat Cinta";
+        listBuku[1][1] = "368";
+        listBuku[1][2] = "Habiburrahman El Shirazy";
+        listBuku[1][3] = "Non Akademik";
+        listBuku[1][4] = "2";
         
-        listBuku[2][0] = "Perahu Kertas";
-        listBuku[2][1] = "38";
-        listBuku[2][2] = "Dewi Lestari";
-        listBuku[2][3] = "7";
+        listBuku[2][0] = "Pengantar Sosiologi";
+        listBuku[2][1] = "250";
+        listBuku[2][2] = "Soerjono Soekanto";
+        listBuku[2][3] = "Akademik";
+        listBuku[2][4] = "3";
+        
+        listBuku[3][0] = "Sebuah Pengantar";
+        listBuku[3][1] = "340";
+        listBuku[3][2] = "Achmad Charris Zubair";
+        listBuku[3][3] = "Akademik";
+        listBuku[3][4] = "4";
+        
+        listBuku[4][0] = "Laskar Pelangi";
+        listBuku[4][1] = "529";
+        listBuku[4][2] = "Andrea Hirata";
+        listBuku[4][3] = "Non Akademik";
+        listBuku[4][4] = "5";
+        
+        listBuku[5][0] = "Perahu Kertas";
+        listBuku[5][1] = "368";
+        listBuku[5][2] = "Dee Lestari";
+        listBuku[5][3] = "Non Akademik";
+        listBuku[5][4] = "6";
+
         
 
 
@@ -362,27 +389,87 @@ public class Main {
                             System.out.println(separator);
                             System.out.println("SELAMAT DATANG DI MANAJEMEN BUKU\n");
 
-                            // Menampilkan list buku
-                            System.out.println("# LIST BUKU #");
-                            System.out.println("--------------------------------------");
-                            for (int i = 0; i < listBuku.length; i++) {
-                                if (listBuku[i][0] != null) {
-                                    System.out.println("------------------");
-                                    System.out.println("| NOMOR BUKU = " + (i + 1) + " |");
-                                    System.out.println("-------------------------------------");
-                                    System.out.println("Nama Buku: " + listBuku[i][0]);
-                                    System.out.println("Jumlah Halaman: " + listBuku[i][1]);
-                                    System.out.println("Pengarang: " + listBuku[i][2]);
-                                    System.out.println("--------------------------------------\n");
+                            do {
+                                if (sortir == "Semua") {
+                                    // Menampilkan list buku
+                                    System.out.println("# LIST BUKU #");
+                                    System.out.println("--------------------------------------");
+                                    for (int i = 0; i < listBuku.length; i++) {
+                                        if (listBuku[i][0] != null) {
+                                            System.out.println("------------------");
+                                            System.out.println("| NOMOR BUKU = " + listBuku[i][4] + " |");
+                                            System.out.println("-------------------------------------");
+                                            System.out.println("Nama Buku: " + listBuku[i][0]);
+                                            System.out.println("Jumlah Halaman: " + listBuku[i][1]);
+                                            System.out.println("Pengarang: " + listBuku[i][2]);
+                                            System.out.println("Jenis Buku: "+listBuku[i][3]);
+                                            System.out.println("--------------------------------------\n");
+                                        }
+                                    }
+                                } else if (sortir == "Akademik") {
+                                    // Menampilkan list buku
+                                    System.out.println("# LIST BUKU #");
+                                    System.out.println("--------------------------------------");
+                                    for (int i = 0; i < listBuku.length; i++) {
+                                        if (listBuku[i][0] != null && listBuku[i][3] == "Akademik") {
+                                            System.out.println("------------------");
+                                            System.out.println("| NOMOR BUKU = " + listBuku[i][4] + " |");
+                                            System.out.println("-------------------------------------");
+                                            System.out.println("Nama Buku: " + listBuku[i][0]);
+                                            System.out.println("Jumlah Halaman: " + listBuku[i][1]);
+                                            System.out.println("Pengarang: " + listBuku[i][2]);
+                                            System.out.println("Jenis Buku: "+listBuku[i][3]);
+                                            System.out.println("--------------------------------------\n");
+                                        }
+                                    }
+                                } else if (sortir == "Non Akademik") {
+                                    // Menampilkan list buku
+                                    System.out.println("# LIST BUKU #");
+                                    System.out.println("--------------------------------------");
+                                    for (int i = 0; i < listBuku.length; i++) {
+                                        if (listBuku[i][0] != null && listBuku[i][3] == "Non Akademik") {
+                                            System.out.println("------------------");
+                                            System.out.println("| NOMOR BUKU = " + listBuku[i][4] + " |");
+                                            System.out.println("-------------------------------------");
+                                            System.out.println("Nama Buku: " + listBuku[i][0]);
+                                            System.out.println("Jumlah Halaman: " + listBuku[i][1]);
+                                            System.out.println("Pengarang: " + listBuku[i][2]);
+                                            System.out.println("Jenis Buku: "+listBuku[i][3]);
+                                            System.out.println("--------------------------------------\n");
+                                        }
+                                    }
                                 }
-                            }
 
-                            // Menanyakan apakah ingin mengubah/menambahkan/menghapus buku?
-                            System.out.println(
-                                    "\n1] Menambahkan Buku Baru\n2] Mengubah Buku\n3] Menghapus Buku\n\n0] Batalkan ");
-                            System.out.print("\nApakah anda ingin melakukan sesuatu dengan data buku tersebut?\n$> ");
-                            pilihanInput = input.nextInt();
+                                // Menanyakan apakah ingin mengubah/menambahkan/menghapus buku?
+                                if (sortir == "Semua") {
+                                    System.out.println("\nSortir:\n11] Akademik\t22] Non Akademik\t<{99] Semua Buku}>");
+                                } else if (sortir == "Non Akademik") {
+                                    System.out.println("\nSortir:\n11] Akademik\t<{22] Non Akademik}>\t99] Semua Buku");
+                                } else if (sortir == "Akademik") {
+                                    System.out.println("\nSortir:\n<{11] Akademik}>\t22] Non Akademik\t99] Semua Buku");
+                                }
+                                System.out.println(
+                                        "\n1] Menambahkan Buku Baru\n2] Mengubah Buku\n3] Menghapus Buku\n\n0] Batalkan ");
+                                System.out.print("\nApakah anda ingin melakukan sesuatu dengan data buku tersebut?\n$> ");
+                                pilihanInput = input.nextInt();
 
+                                switch (pilihanInput) {
+                                    case 11:
+                                        sortir = "Akademik";
+                                        System.out.println();
+                                        break;
+                                    case 22:
+                                        sortir = "Non Akademik";
+                                        System.out.println();
+                                        break;
+                                    case 99:
+                                        sortir = "Semua";
+                                        System.out.println();
+                                        break;
+                                }
+
+                            } while (pilihanInput == 11 || pilihanInput == 22 || pilihanInput == 99);
+                            
                             // Switch Case jika memilih
                             switch (pilihanInput) {
                                 case 1:
@@ -402,6 +489,25 @@ public class Main {
                                     listBuku[availableSlot][1] = input.nextLine();
                                     System.out.print("Pengarang     : ");
                                     listBuku[availableSlot][2] = input.nextLine();
+                                    do {
+                                        System.out.println("1] Akademik\t]2] Non Akademik");
+                                        System.out.print("Pilih angka (1/2): ");
+                                        jenisBuku = input.nextLine();
+                                        switch (jenisBuku) {
+                                            case "1":
+                                                listBuku[availableSlot][3] = "Akademik";
+                                                isMistake = false;
+                                                break;
+                                            case "2":
+                                                listBuku[availableSlot][3] = "Non Akademik";
+                                                isMistake = false;
+                                                break;
+                                            default:
+                                                System.out.println("\nPilihan anda salah, pilih angka 1/2!");
+                                        }                                        
+                                    } while (isMistake);
+                                    isMistake = true;
+                                    listBuku[availableSlot][4] = ""+(availableSlot + 1)+"";
 
                                     System.out.println("\nDATA BERHASIL DITAMBAHKAN!\n");
 
@@ -410,9 +516,11 @@ public class Main {
                                     System.out.println("--------------------------------------");
                                     for (int i = 0; i < listBuku.length; i++) {
                                         if (listBuku[i][0] != null) {
+                                            System.out.println("No Buku: "+listBuku[i][4]);
                                             System.out.println("Nama Buku: " + listBuku[i][0]);
                                             System.out.println("Jumlah Halaman: " + listBuku[i][1]);
                                             System.out.println("Pengarang: " + listBuku[i][2]);
+                                            System.out.println("Jenis Buku: "+listBuku[i][3]);
                                             System.out.println("--------------------------------------");
                                         }
                                     }
@@ -440,9 +548,11 @@ public class Main {
                                     System.out.println("--------------------------------------");
                                     for (int i = 0; i < listBuku.length; i++) {
                                         if (listBuku[i][0] != null) {
+                                            System.out.println("No Buku: "+listBuku[i][4]);
                                             System.out.println("Nama Buku: " + listBuku[i][0]);
                                             System.out.println("Jumlah Halaman: " + listBuku[i][1]);
                                             System.out.println("Pengarang: " + listBuku[i][2]);
+                                            System.out.println("Jenis Buku: "+listBuku[i][3]);
                                             System.out.println("--------------------------------------");
                                         }
                                     }
@@ -469,9 +579,11 @@ public class Main {
                                                 System.out.println("--------------------------------------");
                                                 for (int i = 0; i < listBuku.length; i++) {
                                                     if (listBuku[i][0] != null) {
+                                                        System.out.println("No Buku: "+listBuku[i][4]);
                                                         System.out.println("Nama Buku: " + listBuku[i][0]);
                                                         System.out.println("Jumlah Halaman: " + listBuku[i][1]);
                                                         System.out.println("Pengarang: " + listBuku[i][2]);
+                                                        System.out.println("Jenis Buku: "+listBuku[i][3]);
                                                         System.out.println("--------------------------------------");
                                                     }
                                                 }
@@ -511,8 +623,8 @@ public class Main {
                             // Proses pencarian
                             for (int i = 0; i < listBuku.length; i++) {
                                 if (cariBuku.equalsIgnoreCase(listBuku[i][0])) {
-                                    result = "\nJudul buku ditemukan!\n---------------\nNama Buku: " + listBuku[i][0] + "\nJumlah halaman: " +
-                                            listBuku[i][1] + "\nPengarang: " + listBuku[i][2];
+                                    result = "\nJudul buku ditemukan!\n---------------\nNo Buku: "+listBuku[i][4]+"\nNama Buku: " + listBuku[i][0] + "\nJumlah halaman: " +
+                                            listBuku[i][1] + "\nPengarang: " + listBuku[i][2] + "\nJenis Buku: "+listBuku[i][3];
                                     break;
                                 } else {
                                     result = "\nMaaf,Buku tidak tersedia\n---------------\n*kosong";
