@@ -511,8 +511,8 @@ public class Main {
                             // Proses pencarian
                             for (int i = 0; i < listBuku.length; i++) {
                                 if (cariBuku.equalsIgnoreCase(listBuku[i][0])) {
-                                    result = "\nJudul buku ditemukan!\n---------------\n" + listBuku[i][0] + "\n" +
-                                            listBuku[i][1] + "\n" + listBuku[i][2];
+                                    result = "\nJudul buku ditemukan!\n---------------\nNama Buku: " + listBuku[i][0] + "\nJumlah halaman: " +
+                                            listBuku[i][1] + "\nPengarang: " + listBuku[i][2];
                                     break;
                                 } else {
                                     result = "\nMaaf,Buku tidak tersedia\n---------------\n*kosong";
@@ -545,13 +545,14 @@ public class Main {
                                 // Menampilkan daftar buku novel pada sistem
                                 if (tipe.equalsIgnoreCase("novel")) {
                                     System.out.println(
-                                            "Kami menyediakan beberapa buku novel,dengan beberapa judul yang diantaranya : ");
+                                            "\nKami menyediakan beberapa buku novel,dengan beberapa judul yang diantaranya : ");
                                     System.out.println("1. Negeri 5 Menara");
                                     System.out.println("2. Perahu Kertas");
                                     System.out.println("3. Bintang - Tere Liye");
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // novel
                                     kodeBuku = input.nextByte();
+                                    System.out.println();
                                     if (kodeBuku == 1) {
                                         System.out.println(
                                                 "https://drive.google.com/file/d/1f1JkVi5-IZt3jODtT50r9JnVy5WszdQv/view?usp=drive_link");
@@ -577,6 +578,7 @@ public class Main {
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // komik
                                     kodeBuku = input.nextByte();
+                                    System.out.println();
                                     if (kodeBuku == 1) {
                                         System.out.println(
                                                 "https://drive.google.com/file/d/15Dh6bsELgTN6iBo4cNRPZMcctJdN-il8/view?usp=sharing");
@@ -617,6 +619,7 @@ public class Main {
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // majalah
                                     kodeBuku = input.nextByte();
+                                    System.out.println();
                                     if (kodeBuku == 1) {
                                         System.out.println(
                                                 "https://library.trunojoyo.ac.id/files/epaper/Bobo/majalah%20BOBO%2020210325.pdf");
@@ -639,6 +642,7 @@ public class Main {
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // jurnal
                                     kodeBuku = input.nextByte();
+                                    System.out.println();
                                     if (kodeBuku == 1) {
                                         System.out.println(
                                                 "https://drive.google.com/file/d/11t6kE0qD6H3S144Drz6rifm6UBymz9lb/view?usp=sharing");
@@ -664,6 +668,7 @@ public class Main {
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // pendidikan
                                     kodeBuku = input.nextByte();
+                                    System.out.println();
                                     if (kodeBuku == 1) {
                                         System.out.println(
                                                 "https://static.buku.kemdikbud.go.id/content/pdf/bukuteks/kurikulum21/Informatika-BS-KLS-XI.pdf");
