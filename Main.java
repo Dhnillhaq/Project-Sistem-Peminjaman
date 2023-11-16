@@ -105,7 +105,7 @@ public class Main {
         // Variabel Meminjam buku digital (Case 5)
         String buku, tipe;
         byte kodeBuku;
-
+        
         // Variabel UI
         String separator = "------------------------------------------------------------------------";
         String esc = "\033[H\033[2J";
