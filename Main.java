@@ -25,43 +25,49 @@ public class Main {
         // Index 2 = Pengarang
         // Index 3 = Tema Buku
         // Index 4 = Nomor Buku (Primary Key/Kunci)
-        String[][] listBuku = new String[15][5];
+        String[][] listBuku = new String[15][6];
         // 3 Buku Non Akademik dan 3 Buku Akademik Awal
         listBuku[0][0] = "Metode Penelitian Kualitatif";
         listBuku[0][1] = "312";
         listBuku[0][2] = "M. Nazir";
         listBuku[0][3] = "Akademik";
         listBuku[0][4] = "1";
+        listBuku[0][5] = "5";
 
         listBuku[1][0] = "Ayat-Ayat Cinta";
         listBuku[1][1] = "368";
         listBuku[1][2] = "Habiburrahman El Shirazy";
         listBuku[1][3] = "Non Akademik";
         listBuku[1][4] = "2";
+        listBuku[1][5] = "5";
 
         listBuku[2][0] = "Pengantar Sosiologi";
         listBuku[2][1] = "250";
         listBuku[2][2] = "Soerjono Soekanto";
         listBuku[2][3] = "Akademik";
         listBuku[2][4] = "3";
+        listBuku[2][5] = "5";
 
         listBuku[3][0] = "Sebuah Pengantar";
         listBuku[3][1] = "340";
         listBuku[3][2] = "Achmad Charris Zubair";
         listBuku[3][3] = "Akademik";
         listBuku[3][4] = "4";
+        listBuku[3][5] = "5";
 
         listBuku[4][0] = "Laskar Pelangi";
         listBuku[4][1] = "529";
         listBuku[4][2] = "Andrea Hirata";
         listBuku[4][3] = "Non Akademik";
         listBuku[4][4] = "5";
+        listBuku[4][5] = "5";
 
         listBuku[5][0] = "Perahu Kertas";
         listBuku[5][1] = "368";
         listBuku[5][2] = "Dee Lestari";
         listBuku[5][3] = "Non Akademik";
         listBuku[5][4] = "6";
+        listBuku[5][5] = "5";
 
         //// Variabel Login dan Register
         int menuLogin;
@@ -88,16 +94,16 @@ public class Main {
         boolean doRegister = true, doConfirm = true;
 
         // Variabel Pilih Menu dan Stok Buku (Case 1 & Case 2)
-        int[] stokAwal = { 5, 5, 5, 5, 5, 5 };
-        int pilihanInput, pilihBuku, pinjamBuku;
+        int pilihanInput, pilihBuku, pinjamBuku, selectedStockBuku;
         boolean isMinjam = true;
 
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
         int availableSlot = 0, noBuku;
         String sortir = "Semua", jenisBuku;
         boolean isMistake = true;
-        int jumlahHalBuku2, validate;
+        int validate;
         boolean isLoop = true;
+        String namaBukuTemp, jumHalTemp, pengarangTemp, jumStockBukuTemp;
 
         // Variabel Cari Buku (Case 4)
         String cariBuku, result = "";
@@ -274,161 +280,59 @@ public class Main {
                                 }
                             }
                             System.out.println("\n0] Batalkan\n");
+
                             System.out.print("$> ");
                             pilihBuku = input.nextInt();
-
-                            // Case sesuai inputan user
-                            switch (pilihBuku) {
-                                case 1: // Peminjaman Buku Metode Penelitian Kuantitatif
-                                    // Sambutan
-                                    System.out.println(esc);
-                                    System.out.println("Buku :" + listBuku[0][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[0] + " ]");
-
-                                    // User menentukan jumlah peminjaman buku
-                                    do {
-                                        System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                                        pinjamBuku = input.nextInt();
-
-                                        if (pinjamBuku <= stokAwal[0]) {
-                                            // Melakukan pengurangan
-                                            stokAwal[0] -= pinjamBuku;
-                                            isMinjam = false;
-                                        } else {
-                                            System.out.println("Input anda lebih besar dari stock yang kita punya!");
-                                            isMinjam = true;
-                                        }
-                                        // Menampilkan hasil dari peminjaman
-                                        System.out.println("\n[Stok Buku = " + stokAwal[0] + "]");
-                                    } while (isMinjam);
-
+                            
+                            do {
+                                if (pilihBuku == 0) {
+                                    System.out.println("\nPeminjaman dibatalkan...");
                                     break;
-                                case 2:
-                                    // Peminjaman Buku Ayat-Ayat Cinta
-                                    // Sambutan
-                                    System.out.println(esc);
-                                    System.out.println("Buku :" + listBuku[1][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[1] + "]");
-                                    do {
-                                        // User menentukan jumlah peminjaman buku
-                                        System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                                        pinjamBuku = input.nextInt();
+                                }
+                                if (pilihBuku > 0 && pilihBuku <= listBuku.length) {
+                                    if (listBuku[pilihBuku - 1][0] != null) {
+                                        break; // Keluar dari loop validasi
+                                    }
+                                }
+                                System.out.println("Pilihan Buku tidak tersedia!\n");
+                                System.out.print("$> ");
+                                pilihBuku = input.nextInt();
+                            } while (true);
 
-                                        if (pinjamBuku <= stokAwal[1]) {
-                                            // Melakukan pengurangan
-                                            stokAwal[1] -= pinjamBuku;
-                                            isMinjam = false;
-                                        } else {
-                                            System.out.println("Input anda lebih besar dari stock yang kita punya!");
-                                            isMinjam = true;
-                                        }
-                                        // Menampilkan hasil dari peminjaman
-                                        System.out.println("\n[Stok Buku = " + stokAwal[1] + "]");
-                                    } while (isMinjam);
-                                    break;
-                                case 3:// Peminjaman Buku Pengantar Sosiologi
-                                       // Sambutan
-                                    System.out.println(esc);
-                                    System.out.println("Buku :" + listBuku[2][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[2] + "]");
-                                    do {
-                                        // User menentukan jumlah peminjaman buku
-                                        System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                                        pinjamBuku = input.nextInt();
+                            if (pilihBuku == 0) 
+                                break;
 
-                                        if (pinjamBuku <= stokAwal[2]) {
-                                            // Melakukan pengurangan
-                                            stokAwal[2] -= pinjamBuku;
-                                            isMinjam = false;
-                                        } else {
-                                            System.out.println("Input anda lebih besar dari stock yang kita punya!");
-                                            isMinjam = true;
-                                        }
-                                        // Menampilkan hasil dari peminjaman
-                                        System.out.println("\n[Stok Buku = " + stokAwal[2] + "]");
-                                    } while (isMinjam);
-                                    break;
+                            // Sambutan
+                            System.out.println(esc);
+                            System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
+                            System.out.println("[Stok tersedia = " + listBuku[pilihBuku - 1][5] + " ]");
 
-                                case 4:
-                                    // Peminjaman Buku Sebuah Pengantar
-                                    // Sambutan
-                                    System.out.println(esc);
-                                    System.out.println("Buku :" + listBuku[3][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[3] + "]");
-                                    do {
-                                        // User menentukan jumlah peminjaman buku
-                                        System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                                        pinjamBuku = input.nextInt();
+                            // Menyimpan jumlah stock buku ke variabel
+                            selectedStockBuku = Integer.parseInt(listBuku[pilihBuku - 1][5]);
 
-                                        if (pinjamBuku <= stokAwal[3]) {
-                                            // Melakukan pengurangan
-                                            stokAwal[3] -= pinjamBuku;
-                                            isMinjam = false;
-                                        } else {
-                                            System.out.println("Input anda lebih besar dari stock yang kita punya!");
-                                            isMinjam = true;
-                                        }
-                                        // Menampilkan hasil dari peminjaman
-                                        System.out.println("\n[Stok Buku = " + stokAwal[3] + "]");
-                                    } while (isMinjam);
-                                    break;
+                            // User menentukan jumlah peminjaman buku
+                            do {
+                                System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
+                                pinjamBuku = input.nextInt();
 
-                                case 5:
-                                    // Peminjaman Buku Laskar Pelangi
-                                    // Sambutan
-                                    System.out.println(esc);
-                                    System.out.println("Buku :" + listBuku[4][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[4] + "]");
-                                    do {
-                                        // User menentukan jumlah peminjaman buku
-                                        System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                                        pinjamBuku = input.nextInt();
+                                if (pinjamBuku <= selectedStockBuku) {
+                                    // Melakukan pengurangan
+                                    selectedStockBuku -= pinjamBuku;
 
-                                        if (pinjamBuku <= stokAwal[4]) {
-                                            // Melakukan pengurangan
-                                            stokAwal[4] -= pinjamBuku;
-                                            isMinjam = false;
-                                        } else {
-                                            System.out.println("Input anda lebih besar dari stock yang kita punya!");
-                                            isMinjam = true;
-                                        }
-                                        // Menampilkan hasil dari peminjaman
-                                        System.out.println("\n[Stok Buku = " + stokAwal[4] + "]");
-                                    } while (isMinjam);
-                                    break;
+                                    // Menyimpan jumlah stock buku akhir ke array listBuku semula
+                                    listBuku[pilihBuku - 1][5] = String.valueOf(selectedStockBuku);
+                                    selectedStockBuku = 0; // Reset selected Stock buku ke 0
 
-                                case 6:
-                                    // Peminjaman Buku Perahu Kertas
-                                    // Sambutan
-                                    System.out.println(esc);
-                                    System.out.println("Buku :" + listBuku[5][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[5] + "]");
-                                    do {
-                                        // User menentukan jumlah peminjaman buku
-                                        System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                                        pinjamBuku = input.nextInt();
-
-                                        if (pinjamBuku <= stokAwal[5]) {
-                                            // Melakukan pengurangan
-                                            stokAwal[5] -= pinjamBuku;
-                                            isMinjam = false;
-                                        } else {
-                                            System.out.println("Input anda lebih besar dari stock yang kita punya!");
-                                            isMinjam = true;
-                                        }
-                                        // Menampilkan hasil dari peminjaman
-                                        System.out.println("\n[Stok Buku = " + stokAwal[5] + "]");
-                                    } while (isMinjam);
-                                    break;
-
-                                case 0:
-                                System.out.println("\nPeminjaman dibatalkan...");
-                                    break;
-
-                                default:
-                                    System.out.println("Pilihan tidak tersedia");
-                                    break;
-                            }
+                                    isMinjam = false;
+                                } else {
+                                    System.out.println("Input anda lebih besar dari stock yang kita punya!\n");
+                                    isMinjam = true;
+                                }
+                                
+                                // Menampilkan hasil dari peminjaman
+                                System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
+                                System.out.println("[Stok Buku = " + listBuku[pilihBuku -1][5] + "]");
+                            } while (isMinjam);
 
                             break;
                         case 2:
@@ -446,121 +350,50 @@ public class Main {
                                 }
                             }
                             System.out.println("\n0] Batalkan\n");
+
                             System.out.print("$> ");
                             pilihBuku = input.nextInt();
-                            switch (pilihBuku) {
-                                case 1:
-                                    // -Pengembalian Buku Metode Penelitian Kuantitatif
-                                    System.out.println(esc);
-                                    System.out.println(listBuku[0][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[0] + "]");
-
-                                    // User menentukan jumlah pengembalian buku
-                                    System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                                    pinjamBuku = input.nextInt();
-
-                                    // Melakukan penjumlahan
-                                    stokAwal[0] += pinjamBuku;
-
-                                    // Menampilkan hasil dari pengembalian
-                                    System.out.println("\n" + listBuku[0][0]);
-                                    System.out.println("[Stok Buku = " + stokAwal[0] + "]");
-
+                            
+                            do {
+                                if (pilihBuku == 0) {
+                                    System.out.println("\nPengembalian buku dibatalkan...");
                                     break;
-                                case 2:
-                                    // Pengembalian Buku Ayat-Ayat Cinta
-                                    System.out.println(esc);
-                                    System.out.println(listBuku[1][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[1] + "]");
+                                } 
+                                if (pilihBuku > 0 && pilihBuku <= listBuku.length) {
+                                    if (listBuku[pilihBuku - 1][0] != null) {
+                                        break; // Keluar dari loop validasi
+                                    }
+                                }
+                                System.out.println("Pilihan Buku tidak tersedia!\n");
+                                System.out.print("$> ");
+                                pilihBuku = input.nextInt();
+                            } while (true);
 
-                                    // User menentukan jumlah pengembalian buku
-                                    System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                                    pinjamBuku = input.nextInt();
+                            if (pilihBuku == 0) 
+                                break;
 
-                                    // Melakukan penjumlahan
-                                    stokAwal[1] += pinjamBuku;
+                            System.out.println(esc);
+                            System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
+                            System.out.println("[Stok tersedia = " + listBuku[pilihBuku - 1][5] + "]");
 
-                                    // Menampilkan hasil dari peminjaman
-                                    System.out.println("\n" + listBuku[1][0]);
-                                    System.out.println("[Stok Buku = " + stokAwal[1] + "]");
-                                    break;
-                                case 3:
-                                    // Pengembalian Buku Pengantar Sosiologi
-                                    System.out.println(esc);
-                                    System.out.println(listBuku[2][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[2] + "]");
+                            // User menentukan jumlah pengembalian buku
+                            System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
+                            pinjamBuku = input.nextInt();
 
-                                    // User menentukan jumlah pengembalian buku
-                                    System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                                    pinjamBuku = input.nextInt();
+                            // Menyimpan jumlah selected stock buku ke variabel
+                            selectedStockBuku = Integer.parseInt(listBuku[pilihBuku - 1][5]);
 
-                                    // Melakukan penjumlahan
-                                    stokAwal[2] += pinjamBuku;
+                            // Melakukan penjumlahan
+                            selectedStockBuku += pinjamBuku;
 
-                                    // Menampilkan hasil dari peminjaman
-                                    System.out.println("\n" + listBuku[2][0]);
-                                    System.out.println("[Stok Buku = " + stokAwal[2] + "]");
-                                    break;
-                                case 4:
-                                    // Pengembalian Buku Sebuah Pengantar
-                                    System.out.println(esc);
-                                    System.out.println(listBuku[3][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[3] + "]");
+                            // Menyimpan selected stock buku ke array kembali
+                            listBuku[pilihBuku - 1][5] = String.valueOf(selectedStockBuku);
+                            selectedStockBuku = 0; // Reset selected stock buku ke 0
 
-                                    // User menentukan jumlah pengembalian buku
-                                    System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                                    pinjamBuku = input.nextInt();
+                            // Menampilkan hasil dari pengembalian
+                            System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
+                            System.out.println("[Stok Buku = " + listBuku[pilihBuku - 1][5] + "]");
 
-                                    // Melakukan penjumlahan
-                                    stokAwal[3] += pinjamBuku;
-
-                                    // Menampilkan hasil dari peminjaman
-                                    System.out.println("\n" + listBuku[3][0]);
-                                    System.out.println("[Stok Buku = " + stokAwal[3] + "]");
-                                    break;
-                                case 5:
-                                    // Pengembalian Buku Laskar Pelangi
-                                    System.out.println(esc);
-                                    System.out.println(listBuku[4][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[4] + "]");
-
-                                    // User menentukan jumlah pengembalian buku
-                                    System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                                    pinjamBuku = input.nextInt();
-
-                                    // Melakukan penjumlahan
-                                    stokAwal[4] += pinjamBuku;
-
-                                    // Menampilkan hasil dari peminjaman
-                                    System.out.println("\n" + listBuku[4][0]);
-                                    System.out.println("[Stok Buku = " + stokAwal[4] + "]");
-                                    break;
-                                case 6:
-                                    // Pengembalian Buku Perahu Kertas
-                                    System.out.println(esc);
-                                    System.out.println(listBuku[5][0]);
-                                    System.out.println("[Stok tersedia = " + stokAwal[5] + "]");
-
-                                    // User menentukan jumlah pengembalian buku
-                                    System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                                    pinjamBuku = input.nextInt();
-
-                                    // Melakukan penjumlahan
-                                    stokAwal[5] += pinjamBuku;
-
-                                    // Menampilkan hasil dari peminjaman
-                                    System.out.println("\n" + listBuku[5][0]);
-                                    System.out.println("[Stok Buku = " + stokAwal[5] + "]");
-                                    break;
-
-                                case 0:
-                                    System.out.println("\nPengembalian dibatalkan...");
-                                    break;
-
-                                default:
-                                    System.out.println("Pilihan tidak tersedia");
-                                    break;
-                            }
                             break;
                         case 3:
                             // -Manajemen Buku
@@ -568,6 +401,7 @@ public class Main {
                             System.out.println(separator);
                             System.out.println("SELAMAT DATANG DI MANAJEMEN BUKU\n");
 
+                            sortir = "Semua";
                             do {
                                 if (sortir == "Semua") {
                                     // Menampilkan list buku
@@ -582,6 +416,7 @@ public class Main {
                                             System.out.println("Jumlah Halaman: " + listBuku[i][1]);
                                             System.out.println("Pengarang: " + listBuku[i][2]);
                                             System.out.println("Jenis Buku: " + listBuku[i][3]);
+                                            System.out.println("Stock Buku: " + listBuku[i][5] + " buku tersedia");
                                             System.out.println("--------------------------------------\n");
                                         }
                                     }
@@ -598,6 +433,7 @@ public class Main {
                                             System.out.println("Jumlah Halaman: " + listBuku[i][1]);
                                             System.out.println("Pengarang: " + listBuku[i][2]);
                                             System.out.println("Jenis Buku: " + listBuku[i][3]);
+                                            System.out.println("Stock Buku: " + listBuku[i][5] + " buku tersedia");
                                             System.out.println("--------------------------------------\n");
                                         }
                                     }
@@ -614,6 +450,7 @@ public class Main {
                                             System.out.println("Jumlah Halaman: " + listBuku[i][1]);
                                             System.out.println("Pengarang: " + listBuku[i][2]);
                                             System.out.println("Jenis Buku: " + listBuku[i][3]);
+                                            System.out.println("Stock Buku: " + listBuku[i][5] + " buku tersedia");
                                             System.out.println("--------------------------------------\n");
                                         }
                                     }
@@ -663,15 +500,18 @@ public class Main {
 
                                     input.nextLine();
                                     System.out.println("\n---MENAMBAHKAN BUKU BARU---");
-                                    System.out.print("Nama Buku     : ");
+                                    System.out.print("Nama Buku         : ");
                                     listBuku[availableSlot][0] = input.nextLine();
-                                    System.out.print("Jumlah Halaman: ");
+                                    System.out.print("Jumlah Halaman    : ");
                                     listBuku[availableSlot][1] = input.nextLine();
-                                    System.out.print("Pengarang     : ");
+                                    System.out.print("Pengarang         : ");
                                     listBuku[availableSlot][2] = input.nextLine();
+                                    System.out.print("Jumlah Stock Buku (harus berupa angka) : ");
+                                    listBuku[availableSlot][5] = String.valueOf(input.nextInt()); // Konversi input ke string
+                                    input.nextLine();
                                     do {
-                                        System.out.println("1] Akademik\t]2] Non Akademik");
-                                        System.out.print("Pilih angka (1/2): ");
+                                        System.out.println("\n1] Akademik\t2] Non Akademik");
+                                        System.out.print("Pilih jenis buku (1/2): ");
                                         jenisBuku = input.nextLine();
                                         switch (jenisBuku) {
                                             case "1":
@@ -696,11 +536,12 @@ public class Main {
                                     System.out.println("--------------------------------------");
                                     for (int i = 0; i < listBuku.length; i++) {
                                         if (listBuku[i][0] != null) {
-                                            System.out.println("No Buku: " + listBuku[i][4]);
-                                            System.out.println("Nama Buku: " + listBuku[i][0]);
-                                            System.out.println("Jumlah Halaman: " + listBuku[i][1]);
-                                            System.out.println("Pengarang: " + listBuku[i][2]);
-                                            System.out.println("Jenis Buku: " + listBuku[i][3]);
+                                            System.out.println("No Buku         : " + listBuku[i][4]);
+                                            System.out.println("Nama Buku       : " + listBuku[i][0]);
+                                            System.out.println("Jumlah Halaman  : " + listBuku[i][1]);
+                                            System.out.println("Pengarang       : " + listBuku[i][2]);
+                                            System.out.println("Jenis Buku      : " + listBuku[i][3]);
+                                            System.out.println("Stock Buku      : " + listBuku[i][5] + " buku tersedia");
                                             System.out.println("--------------------------------------");
                                         }
                                     }
@@ -709,17 +550,57 @@ public class Main {
                                 case 2:
                                     input.nextLine();
                                     System.out.println("\n---MENGUBAH BUKU---");
-                                    System.out.print("Masukkan NOMOR BUKU yang akan diubah: ");
-                                    noBuku = input.nextInt();
+                                    do {
+                                        System.out.print("Masukkan NOMOR BUKU yang akan diubah: ");
+                                        noBuku = input.nextInt();
+                                        if (noBuku > 0 && noBuku <= listBuku.length) {
+                                            if (listBuku[noBuku -1][0] != null) {
+                                                break;
+                                            }
+                                        }
+                                        System.out.println("Nomor buku tidak ditemukan!");
+                                    } while (true);
 
                                     input.nextLine();
-                                    System.out.println("\nEdit data Buku...");
+                                    System.out.println("\nEdit data Buku... (Berikan input '-' jika tidak ingin merubah)");
                                     System.out.print("Nama Buku     : ");
-                                    listBuku[noBuku - 1][0] = input.nextLine();
+                                    namaBukuTemp = input.nextLine();
+                                    listBuku[noBuku - 1][0] = (namaBukuTemp.equals("-") || namaBukuTemp.equals("")) ? listBuku[noBuku - 1][0] : namaBukuTemp;
                                     System.out.print("Jumlah Halaman: ");
-                                    listBuku[noBuku - 1][1] = input.nextLine();
+                                    jumHalTemp = input.nextLine();
+                                    listBuku[noBuku - 1][1] = (jumHalTemp.equals("-") || jumHalTemp.equals("")) ? listBuku[noBuku - 1][1] : jumHalTemp;
                                     System.out.print("Pengarang     : ");
-                                    listBuku[noBuku - 1][2] = input.nextLine();
+                                    pengarangTemp = input.nextLine();
+                                    listBuku[noBuku - 1][2] = (pengarangTemp.equals("-") || pengarangTemp.equals("")) ? listBuku[noBuku - 1][2] : pengarangTemp;
+                                    System.out.print("Jumlah Stock Buku (harus berupa angka) : ");
+                                    jumStockBukuTemp = input.nextLine();
+                                    listBuku[noBuku - 1][5] = (jumStockBukuTemp.equals("-") || jumStockBukuTemp.equals("")) ? listBuku[noBuku - 1][5] : String.valueOf(Integer.parseInt(jumStockBukuTemp)); // Konversi input ke string
+                                    // Reset Temp Var
+                                    namaBukuTemp = ""; jumHalTemp = ""; pengarangTemp = ""; jumStockBukuTemp = ""; 
+                                    do {
+                                        System.out.println("\n1] Akademik\t2] Non Akademik\t\t0] Default (Tidak mengubah)");
+                                        System.out.print("Pilih jenis buku (1/2): ");
+                                        jenisBuku = input.nextLine();
+                                        switch (jenisBuku) {
+                                            case "1":
+                                                listBuku[noBuku - 1][3] = "Akademik";
+                                                isMistake = false;
+                                                break;
+                                            case "2":
+                                                listBuku[noBuku - 1][3] = "Non Akademik";
+                                                isMistake = false;
+                                                break;
+                                            case "0":
+                                                isMistake = false;
+                                                break;
+                                            case "-":
+                                                isMistake = false;
+                                                break;
+                                            default:
+                                                System.out.println("\nPilihan anda salah, pilih angka 1/2!");
+                                        }
+                                    } while (isMistake);
+                                    isMistake = true;
 
                                     System.out.println("\nDATA BERHASIL DIUBAH\n");
 
@@ -728,11 +609,12 @@ public class Main {
                                     System.out.println("--------------------------------------");
                                     for (int i = 0; i < listBuku.length; i++) {
                                         if (listBuku[i][0] != null) {
-                                            System.out.println("No Buku: " + listBuku[i][4]);
-                                            System.out.println("Nama Buku: " + listBuku[i][0]);
-                                            System.out.println("Jumlah Halaman: " + listBuku[i][1]);
-                                            System.out.println("Pengarang: " + listBuku[i][2]);
-                                            System.out.println("Jenis Buku: " + listBuku[i][3]);
+                                            System.out.println("No Buku         : " + listBuku[i][4]);
+                                            System.out.println("Nama Buku       : " + listBuku[i][0]);
+                                            System.out.println("Jumlah Halaman  : " + listBuku[i][1]);
+                                            System.out.println("Pengarang       : " + listBuku[i][2]);
+                                            System.out.println("Jenis Buku      : " + listBuku[i][3]);
+                                            System.out.println("Stock Buku      : " + listBuku[i][5] + " buku tersedia");
                                             System.out.println("--------------------------------------");
                                         }
                                     }
@@ -741,8 +623,16 @@ public class Main {
                                     while (isLoop) {
                                         input.nextLine();
                                         System.out.println("\n---MENGHAPUS BUKU---");
-                                        System.out.print("Masukkan NOMOR BUKU yang akan dihapus: ");
-                                        noBuku = input.nextInt();
+                                        do {
+                                            System.out.print("Masukkan NOMOR BUKU yang akan dihapus: ");
+                                            noBuku = input.nextInt();
+                                            if (noBuku > 0 && noBuku <= listBuku.length) {
+                                                if (listBuku[noBuku - 1][0] != null) {
+                                                    break;
+                                                }
+                                            }
+                                            System.out.println("Nomor buku tidak ditemukan!");
+                                        } while (true);
 
                                         System.out.print(
                                                 "\nApakah anda yakin untuk menghapus data diatas?\n1]Ya.\n2]Tidak\n$> ");
@@ -759,11 +649,12 @@ public class Main {
                                                 System.out.println("--------------------------------------");
                                                 for (int i = 0; i < listBuku.length; i++) {
                                                     if (listBuku[i][0] != null) {
-                                                        System.out.println("No Buku: " + listBuku[i][4]);
-                                                        System.out.println("Nama Buku: " + listBuku[i][0]);
-                                                        System.out.println("Jumlah Halaman: " + listBuku[i][1]);
-                                                        System.out.println("Pengarang: " + listBuku[i][2]);
-                                                        System.out.println("Jenis Buku: " + listBuku[i][3]);
+                                                        System.out.println("No Buku         : " + listBuku[i][4]);
+                                                        System.out.println("Nama Buku       : " + listBuku[i][0]);
+                                                        System.out.println("Jumlah Halaman  : " + listBuku[i][1]);
+                                                        System.out.println("Pengarang       : " + listBuku[i][2]);
+                                                        System.out.println("Jenis Buku      : " + listBuku[i][3]);
+                                                        System.out.println("Stock Buku      : " + listBuku[i][5] + " buku tersedia");
                                                         System.out.println("--------------------------------------");
                                                     }
                                                 }
