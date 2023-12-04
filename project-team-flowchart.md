@@ -18,6 +18,22 @@
 ```mermaid
 
 flowchart TD
+    
+    %% Fungsi
+    %% -------- Input No Buku
+    FungsiInputNoBuku(["Fungsi inputNoBuku()"]) --> InputNoBukuUser["Memasukkan Input noBuku"]
+    InputNoBukuUser --> returnFungsiInputNoBuku(["return noBuku"])
+    %% -------- Menampilkan Buku
+    FungsiMenampilkanBuku(["Fungsi TampilBuku()"]) --> MenampilkanListBuku2["Menampilkan List buku"] --> returnFungsiMenampilkanBuku(["return"])
+    %% -------- Tambah Buku
+    FungsiTambahBuku(["Fungsi tambahBuku(noBuku)"]) --> InputJumlahBuku["Input Jumlah Buku"]
+    InputJumlahBuku --> Simpan["Tambah Stock Buku Disimpan"]
+    Simpan --> returnFungsiTambahBuku(["return"])
+    %% -------- Kurangi Buku
+    FungsiKurangiBuku(["Fungsi kurangiBuku(noBuku)"]) --> InputJumlahBuku2["Input Jumlah Buku"]
+    InputJumlahBuku2 --> Simpan2["Kurang Stock Buku Disimpan"]
+    Simpan2 --> returnFungsiKurangiBuku(["return"])
+
     START(["START"]) --> DecLogReg["
         Verification
         1] Login
@@ -96,15 +112,28 @@ flowchart TD
 
     %% 5] Buku Digital
     Menu -- if 5 --> BukuDigital["Buku Digital"]
-    BukuDigital --> MeanmpilkanTipeBuku["Menampilkan Tipe Buku"]
-    MeanmpilkanTipeBuku -->  MemilihTipeBuku["Memilih Tipe Buku"]
+    BukuDigital --> MenampilkanTipeBuku["Menampilkan Tipe Buku"]
+    MenampilkanTipeBuku -->  MemilihTipeBuku["Memilih Tipe Buku"]
     MemilihTipeBuku --> TampilkananBuku["Menampilkan Buku Berupa wujud Link"]
     TampilkananBuku --> Point((" "))
     
     %% 6] Pengelolaan Stok Buku
     Menu -- if 6 --> PengelolaanStockBuku["Pengelolaan Stock Buku"]
-    PengelolaanStockBuku --> UnknownPengelolaan["Unknown (?)"]
-    UnknownPengelolaan --> Point((" "))
+    PengelolaanStockBuku --> MenuPengelolaanStockBuku["
+        1. Tampilkan buku tersedia
+        2. Tambah buku
+        3. Kurang buku
+    "]
+    MenuPengelolaanStockBuku --> InputNoBuku[["inputNoBuku"]]
+
+        %% Tampilkan buku tersedia
+        InputNoBuku -- if 1 --> MenampilkanBuku[["TampilBuku"]] --> Point((" "))
+        %% Tambah Buku
+        InputNoBuku -- if 2 --> TambahBuku[["tambahBuku"]]
+        TambahBuku --> Point((" "))
+        %% Kurang Buku
+        InputNoBuku -- if 3 --> KurangBuku[["kurangBuku"]]
+        KurangBuku --> Point((" "))
 
 
     %% Action after Point
@@ -119,6 +148,7 @@ flowchart TD
 
     %% 2] Tidak(logout)
     Validation -- If 2 --> DecLogReg
+
 
 
 ```
