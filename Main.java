@@ -13,6 +13,21 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     static String[][] listBuku = new String[15][6];
 
+    // Fungsi untuk mencari buku pada case Pencarian Buku
+    static void cariBuku(String cariBuku, int i) {
+        if (i < listBuku.length && i >= 0) {
+            if (cariBuku.equalsIgnoreCase(listBuku[i][0])) {
+                System.out.println("\n---------------------------------\nHasil Pencarian kami:\n\nNomor Buku     : "
+                        + listBuku[i][4] + "\nJudul buku     : " + listBuku[i][0] + "\nNama Pengarang : " + listBuku[i][2]
+                        + "\nJumlah Halaman : " + listBuku[i][1] + "\nStok Tersedia  : " + listBuku[i][5]);
+            } else {
+                cariBuku(cariBuku, i + 1);
+            }
+        } else {
+            System.out.println("\nMaaf,Buku tidak ditemukan");
+        }
+    }
+    // Fungsi untuk menampilkan list buku
     static void TampilBuku() {
         for (int i = 0; i < listBuku.length; i++) {
             if (listBuku[i][0] != null) {
@@ -22,7 +37,7 @@ public class Main {
             }
         }
     }
-
+    // Fungsi untuk menginput nomor buku
     static int inputNoBuku() {
         int noBuku;
         do {
@@ -38,6 +53,7 @@ public class Main {
         return noBuku;
     }
 
+    // Fungsi untuk menambahkan stok buku
     static void tambahBuku(int pilihan) {
         System.out.print("Tambah stock buku : ");
         int tambah = input.nextInt();
@@ -46,6 +62,7 @@ public class Main {
         System.out.println("buku berhasil ditambahkan");
     }
 
+    // Fungsi untuk mengurangi stok buku
     static void kurangiBuku(int pilihan) {
         System.out.print("Kurangi stock buku : ");
         int kurangi = input.nextInt();
@@ -753,19 +770,7 @@ public class Main {
                             cariBuku = input.nextLine();
 
                             // Proses pencarian
-                            for (int i = 0; i < listBuku.length; i++) {
-                                if (cariBuku.equalsIgnoreCase(listBuku[i][0])) {
-                                    result = "\nJudul buku ditemukan!\n---------------\nNo Buku: " + listBuku[i][4]
-                                            + "\nNama Buku: " + listBuku[i][0] + "\nJumlah halaman: " +
-                                            listBuku[i][1] + "\nPengarang: " + listBuku[i][2] + "\nJenis Buku: "
-                                            + listBuku[i][3];
-                                    break;
-                                } else {
-                                    result = "\nMaaf,Buku tidak tersedia\n---------------\n*kosong";
-                                }
-                            }
-                            System.out.println(result);
-
+                            cariBuku(cariBuku, 0);
                             break;
                         case 5:
 
