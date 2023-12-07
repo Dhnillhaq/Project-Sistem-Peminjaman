@@ -13,20 +13,61 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     static String[][] listBuku = new String[15][6];
 
-    // Fungsi untuk mencari buku pada case Pencarian Buku
+    // Fungsi saranJudul jika input tidak sesuai dengan judul dalam listBuku
+    static void saranJudul(String cariBuku, String[][] arrayData) {
+        String saranIndex[] = new String[15];
+        // Loop untuk mengecek per judul dalam listBuku
+        for (int i = 0; i < arrayData.length; i++) {
+            if (arrayData[i][0] != null) {
+                String[] tempSplitData = arrayData[i][0].split("[- ]+"); // Pemisahan perkata Judul dalam listBuku
+                String[] tempSplitInput = cariBuku.split("[-., ]+"); // Pemisahan perkata input user
+
+                //Loop yang akan mengecek input dari user apakah terdiri dari kata pada judul listBuku
+                Outerloop:for (int j = 0; j < tempSplitInput.length; j++) {
+                    for (int j2 = 0; j2 < tempSplitData.length; j2++) {
+                        if (tempSplitInput[j].equalsIgnoreCase(tempSplitData[j2])) {
+                            for (int k = 0; k < tempSplitInput.length; k++) {
+                                if (saranIndex[k] == null) { 
+                                    saranIndex[k] = i + ""; // Menyimpan index judul pada nilai null.
+                                    break Outerloop;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Menampilkan hasil pengecekan apakah ada saran
+        System.out.println("Mungkin maksud anda adalah,\n");
+        for (int i = 0; i < saranIndex.length; i++) {
+            if (saranIndex[0] == null) {
+                System.out.println("Maaf, Kami tidak memiliki judul buku yang anda cari.\nCoba lagi dengan memperbaiki input anda.");
+                return;
+            } else if (saranIndex[i] == null) {
+                return;
+            } else {
+                int indexKe = Integer.parseInt(saranIndex[i]);
+                System.out.println(" - " + arrayData[indexKe][0]);
+            }
+        }
+    }
+
+    // Fungsi Pencarian Buku
     static void cariBuku(String cariBuku, int i) {
-        if (i < listBuku.length && i >= 0) {
+        if (i >= 0 && i < listBuku.length) {
             if (cariBuku.equalsIgnoreCase(listBuku[i][0])) {
                 System.out.println("\n---------------------------------\nHasil Pencarian kami:\n\nNomor Buku     : "
-                        + listBuku[i][4] + "\nJudul buku     : " + listBuku[i][0] + "\nNama Pengarang : " + listBuku[i][2]
+                        + listBuku[i][4] + "\nJudul buku     : " + listBuku[i][0] + "\nNama Pengarang : "
+                        + listBuku[i][2]
                         + "\nJumlah Halaman : " + listBuku[i][1] + "\nStok Tersedia  : " + listBuku[i][5]);
             } else {
                 cariBuku(cariBuku, i + 1);
             }
         } else {
-            System.out.println("\nMaaf,Buku tidak ditemukan");
+            saranJudul(cariBuku, listBuku);
         }
     }
+
     // Fungsi untuk menampilkan list buku
     static void TampilBuku() {
         for (int i = 0; i < listBuku.length; i++) {
@@ -37,6 +78,7 @@ public class Main {
             }
         }
     }
+
     // Fungsi untuk menginput nomor buku
     static int inputNoBuku() {
         int noBuku;
