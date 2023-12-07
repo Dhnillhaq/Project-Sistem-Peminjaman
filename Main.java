@@ -38,7 +38,7 @@ public class Main {
             }
         }
         // Menampilkan hasil pengecekan apakah ada saran
-        System.out.println("Mungkin maksud anda adalah,");
+        System.out.println("Mungkin maksud anda adalah,\n");
         for (int i = 0; i < saranIndex.length; i++) {
             if (saranIndex[0] == null) {
                 System.out.println("Maaf, Kami tidak memiliki judul buku yang anda cari.\nCoba lagi dengan memperbaiki input anda.");
