@@ -21,9 +21,9 @@ Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 - 🤝 Peminjaman Buku
 - 🔙 Pengembalian buku
 - 📊 Manajemen buku
-- 🔍 Pencarian buku (On Progress)
+- 🔍 Pencarian buku
 - 📱 Buku digital
-- 📦 Pengelolaan stok buku (On Progress)
+- 📦 Pengelolaan stok buku
 
 ---
 
