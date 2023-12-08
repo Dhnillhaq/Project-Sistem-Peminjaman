@@ -20,6 +20,11 @@
 flowchart TD
     
     %% Fungsi
+    %% Validasi Input Angka
+    FungsiValidasiInputAngka(["validasiInputAngka(String inputStr)"]) --> validasiInput["Validasi Input Angka"]
+    validasiInput -- IF FALSE --> memintaInputBerisiAngka[/"Input Harus Angka"/]
+    memintaInputBerisiAngka --> validasiInput
+    validasiInput -- IF TRUE --> returnAngkaInteger(["return Integer.parseInt(inputStr)"])
     %% -------- Saran Judul
     FungsiSaranJudul(["Fungsi saranJudul(String cariBuku, String[][] arrayData)"]) --> cekKataMirip["Mengecek Kata yang Mirip"]
     cekKataMirip -- IF TRUE --> outputTampilJudulMirip[/"Tampil Judul yang Mirip"/]
