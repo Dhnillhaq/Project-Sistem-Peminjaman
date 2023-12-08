@@ -818,7 +818,6 @@ public class Main {
                             }
                             break;
                         case 4:
-                            input.nextLine();
                             // -Pencarian Buku
                             // *Sambutan
                             System.out.println(esc);
@@ -836,9 +835,7 @@ public class Main {
                             } while (isFound);
                             break;
                         case 5:
-
                             // - Buku Digital
-                            input.nextLine();
 
                             System.out.println(esc);
                             System.out.println(separator);
@@ -1075,7 +1072,6 @@ public class Main {
 
                             break;
                         case 0:
-
                             // Logout User (User meminta untuk logout)
                             toLogin = true; // Akan menuju ke halaman login
                             notExit = false; // Akan keluar dari loop menu
