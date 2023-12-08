@@ -511,7 +511,7 @@ public class Main {
                             selectedStockBuku = 0; // Reset selected stock buku ke 0
 
                             // Menampilkan hasil dari pengembalian
-                            System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
+                            System.out.println("\n[STOCK DATA BUKU UPDATED]\nBuku : " + listBuku[pilihBuku - 1][0]);
                             System.out.println("[Stok Buku = " + listBuku[pilihBuku - 1][5] + "]");
 
                             break;
