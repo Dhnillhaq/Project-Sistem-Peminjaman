@@ -203,7 +203,7 @@ public class Main {
         userAccount[3][1] = "yakul123";
 
         // Variabel Login
-        String usernameInput, passInput;
+        String usernameInput = "", passInput;
         boolean isAllowed = false, stillLogin = true;
         // Variabel Register
         String passConfirmation, regUsername = "", regPassword;
@@ -362,7 +362,7 @@ public class Main {
                     isLoop = true;
                     System.out.println(esc);
                     System.out.println(separator);
-                    System.out.println("Selamat Datang di Perpustakaan! (Under Development)\n");
+                    System.out.println("Halo "+usernameInput+", Selamat Datang di Perpustakaan! (Under Development)\n");
 
                     System.out.println("1] Peminjaman Buku");
                     System.out.println("2] Pengembalian Buku");
@@ -416,7 +416,7 @@ public class Main {
 
                             if (pilihBuku == 0)
                                 break;
-
+                            
                             // Sambutan
                             System.out.println(esc);
                             System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
@@ -424,6 +424,11 @@ public class Main {
 
                             // Menyimpan jumlah stock buku ke variabel
                             selectedStockBuku = Integer.parseInt(listBuku[pilihBuku - 1][5]);
+
+                            if (selectedStockBuku <= 0) {
+                                System.out.println("\nUpps maaf, sepertinya buku ini sudah kehabisan Stock!");
+                                break;
+                            } 
 
                             // User menentukan jumlah peminjaman buku
                             do {
@@ -445,7 +450,7 @@ public class Main {
                                 }
 
                                 // Menampilkan hasil dari peminjaman
-                                System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
+                                System.out.println("\n[STOCK DATA BUKU UPDATED]\nBuku : " + listBuku[pilihBuku - 1][0]);
                                 System.out.println("[Stok Buku = " + listBuku[pilihBuku - 1][5] + "]");
                             } while (isMinjam);
 
