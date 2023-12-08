@@ -22,12 +22,13 @@ public class Main {
                 String[] tempSplitData = arrayData[i][0].split("[- ]+"); // Pemisahan perkata Judul dalam listBuku
                 String[] tempSplitInput = cariBuku.split("[-., ]+"); // Pemisahan perkata input user
 
-                //Loop yang akan mengecek input dari user apakah terdiri dari kata pada judul listBuku
-                Outerloop:for (int j = 0; j < tempSplitInput.length; j++) {
+                // Loop yang akan mengecek input dari user apakah terdiri dari kata pada judul
+                // listBuku
+                Outerloop: for (int j = 0; j < tempSplitInput.length; j++) {
                     for (int j2 = 0; j2 < tempSplitData.length; j2++) {
                         if (tempSplitInput[j].equalsIgnoreCase(tempSplitData[j2])) {
                             for (int k = 0; k < tempSplitInput.length; k++) {
-                                if (saranIndex[k] == null) { 
+                                if (saranIndex[k] == null) {
                                     saranIndex[k] = i + ""; // Menyimpan index judul pada nilai null.
                                     break Outerloop;
                                 }
@@ -38,33 +39,38 @@ public class Main {
             }
         }
         // Menampilkan hasil pengecekan apakah ada saran
-        System.out.println("Mungkin maksud anda adalah,\n");
+        if (saranIndex[0] != null) {
+            System.out.println("Mungkin maksud anda adalah,\n");
+        } else {
+            System.out.println(
+                    "\nMaaf, Kami tidak memiliki judul buku yang anda cari.\nCoba lagi dengan memperbaiki input anda.");
+            return;
+        }
         for (int i = 0; i < saranIndex.length; i++) {
-            if (saranIndex[0] == null) {
-                System.out.println("Maaf, Kami tidak memiliki judul buku yang anda cari.\nCoba lagi dengan memperbaiki input anda.");
-                return;
-            } else if (saranIndex[i] == null) {
+            if (saranIndex[i] == null) {
                 return;
             } else {
                 int indexKe = Integer.parseInt(saranIndex[i]);
-                System.out.println(" - " + arrayData[indexKe][0]);
+                System.out.println("- " + arrayData[indexKe][0]);
             }
         }
     }
 
     // Fungsi Pencarian Buku
-    static void cariBuku(String cariBuku, int i) {
+    static boolean cariBuku(String cariBuku, int i) {
         if (i >= 0 && i < listBuku.length) {
             if (cariBuku.equalsIgnoreCase(listBuku[i][0])) {
                 System.out.println("\n---------------------------------\nHasil Pencarian kami:\n\nNomor Buku     : "
                         + listBuku[i][4] + "\nJudul buku     : " + listBuku[i][0] + "\nNama Pengarang : "
                         + listBuku[i][2]
                         + "\nJumlah Halaman : " + listBuku[i][1] + "\nStok Tersedia  : " + listBuku[i][5]);
+                return false;
             } else {
-                cariBuku(cariBuku, i + 1);
+                return cariBuku(cariBuku, i + 1);
             }
         } else {
             saranJudul(cariBuku, listBuku);
+            return true;
         }
     }
 
@@ -207,7 +213,8 @@ public class Main {
         String namaBukuTemp, jumHalTemp, pengarangTemp, jumStockBukuTemp;
 
         // Variabel Cari Buku (Case 4)
-        String cariBuku, result = "";
+        String cariBuku;
+        boolean isFound;
 
         // Variabel Meminjam buku digital (Case 5)
         String buku, tipe;
@@ -805,14 +812,16 @@ public class Main {
                             System.out.println(esc);
                             System.out.println(separator);
                             System.out.println("SELAMAT DATANG DI PENCARIAN BUKU");
+                            do {
 
-                            // User menentukan buku yang dicari
-                            System.out.println("\nMasukkan buku yang ingin anda cari: ");
-                            System.out.print("$> ");
-                            cariBuku = input.nextLine();
+                                // User menentukan buku yang dicari
+                                System.out.println("\nMasukkan buku yang ingin anda cari: ");
+                                System.out.print("$> ");
+                                cariBuku = input.nextLine();
 
-                            // Proses pencarian
-                            cariBuku(cariBuku, 0);
+                                // Proses pencarian
+                                isFound = cariBuku(cariBuku, 0);
+                            } while (isFound);
                             break;
                         case 5:
 
@@ -1065,7 +1074,6 @@ public class Main {
                         default: // Kondisi jika inputan TIDAK SESUAI dengan menu apapun
                             System.out.println("Maaf Input anda tidak sesuai...\n");
                             break;
-
                     }
 
                     if (!toLogin) { // Kondisi akan dijalankan jika user tidak meminta logout
@@ -1092,13 +1100,10 @@ public class Main {
                                 break;
                         }
                     }
-
                 } while (exit);
             } else {
                 System.out.println("Gagal Melakukan Login...");
             }
         } while (toLogin);
-
     }
-
 }
