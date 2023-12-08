@@ -13,6 +13,15 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     static String[][] listBuku = new String[15][6];
 
+    // Fungsi validasiInputAngka
+    static int validasiInputAngka(String inputStr){
+        while (!inputStr.matches("\\d+")){
+            System.out.print("----[ERROR]-- Input Harus ANGKA! --[ERROR]----\n$> ");
+            inputStr = input.nextLine();
+        }
+        return Integer.parseInt(inputStr);
+    }
+
     // Fungsi saranJudul jika input tidak sesuai dengan judul dalam listBuku
     static void saranJudul(String cariBuku, String[][] arrayData) {
         String saranIndex[] = new String[15];
@@ -90,7 +99,7 @@ public class Main {
         int noBuku;
         do {
             System.out.print("Masukkan NOMOR BUKU yang akan diubah: ");
-            noBuku = input.nextInt();
+            noBuku = validasiInputAngka(input.nextLine());
             if (noBuku > 0 && noBuku <= listBuku.length) {
                 if (listBuku[noBuku - 1][0] != null) {
                     break;
@@ -104,7 +113,7 @@ public class Main {
     // Fungsi untuk menambahkan stok buku
     static void tambahBuku(int pilihan) {
         System.out.print("Tambah stock buku : ");
-        int tambah = input.nextInt();
+        int tambah = validasiInputAngka(input.nextLine());
         int hasil = Integer.parseInt(listBuku[pilihan][5]) + tambah;
         listBuku[pilihan][5] = hasil + "";
         System.out.println("buku berhasil ditambahkan");
@@ -113,7 +122,7 @@ public class Main {
     // Fungsi untuk mengurangi stok buku
     static void kurangiBuku(int pilihan) {
         System.out.print("Kurangi stock buku : ");
-        int kurangi = input.nextInt();
+        int kurangi = validasiInputAngka(input.nextLine());
         int hasil = Integer.parseInt(listBuku[pilihan][5]) - kurangi;
         listBuku[pilihan][5] = hasil + "";
         System.out.println("buku berhasil dikurangi");
@@ -228,7 +237,7 @@ public class Main {
         boolean canLogin = false;
 
         // Variabel Validasi Menu
-        boolean exit = false;
+        boolean notExit = false;
         // Variabel kembali ke menu
         int menu;
 
@@ -241,11 +250,10 @@ public class Main {
                 System.out.println("2] Register");
                 System.out.println("\n0] Exit Program");
                 System.out.print("\n$> ");
-                menuLogin = input.nextInt();
+                menuLogin = validasiInputAngka(input.nextLine());
 
                 switch (menuLogin) {
                     case 1:
-                        input.nextLine();
                         System.out.println(esc);
                         System.out.println(separator);
 
@@ -281,7 +289,6 @@ public class Main {
                         onMenuLogin = false;
                         break;
                     case 2:
-                        input.nextLine();
                         System.out.println(esc);
                         System.out.println(separator);
 
@@ -350,7 +357,7 @@ public class Main {
                 // Tampilan Menu
                 do {
                     // Deklarasi default agar looping menu tetap berjalan
-                    exit = true;
+                    notExit = true;
 
                     isLoop = true;
                     System.out.println(esc);
@@ -368,7 +375,7 @@ public class Main {
                     // Meminta input dari user
                     System.out.println("\nSilahkan pilih salah satu dari menu diatas");
                     System.out.print("$> ");
-                    pilihanInput = input.nextInt();
+                    pilihanInput = validasiInputAngka(input.nextLine());
 
                     // Memilih sesuai dengan input user
                     switch (pilihanInput) {
@@ -390,7 +397,7 @@ public class Main {
                             System.out.println("\n0] Batalkan\n");
 
                             System.out.print("$> ");
-                            pilihBuku = input.nextInt();
+                            pilihBuku = validasiInputAngka(input.nextLine());
 
                             do {
                                 if (pilihBuku == 0) {
@@ -404,7 +411,7 @@ public class Main {
                                 }
                                 System.out.println("Pilihan Buku tidak tersedia!\n");
                                 System.out.print("$> ");
-                                pilihBuku = input.nextInt();
+                                pilihBuku = validasiInputAngka(input.nextLine());
                             } while (true);
 
                             if (pilihBuku == 0)
@@ -421,7 +428,7 @@ public class Main {
                             // User menentukan jumlah peminjaman buku
                             do {
                                 System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
-                                pinjamBuku = input.nextInt();
+                                pinjamBuku = validasiInputAngka(input.nextLine());
 
                                 if (pinjamBuku <= selectedStockBuku) {
                                     // Melakukan pengurangan
@@ -460,7 +467,7 @@ public class Main {
                             System.out.println("\n0] Batalkan\n");
 
                             System.out.print("$> ");
-                            pilihBuku = input.nextInt();
+                            pilihBuku = validasiInputAngka(input.nextLine());
 
                             do {
                                 if (pilihBuku == 0) {
@@ -474,7 +481,7 @@ public class Main {
                                 }
                                 System.out.println("Pilihan Buku tidak tersedia!\n");
                                 System.out.print("$> ");
-                                pilihBuku = input.nextInt();
+                                pilihBuku = validasiInputAngka(input.nextLine());
                             } while (true);
 
                             if (pilihBuku == 0)
@@ -486,7 +493,7 @@ public class Main {
 
                             // User menentukan jumlah pengembalian buku
                             System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                            pinjamBuku = input.nextInt();
+                            pinjamBuku = validasiInputAngka(input.nextLine());
 
                             // Menyimpan jumlah selected stock buku ke variabel
                             selectedStockBuku = Integer.parseInt(listBuku[pilihBuku - 1][5]);
@@ -576,7 +583,7 @@ public class Main {
                                         "\n1] Menambahkan Buku Baru\n2] Mengubah Buku\n3] Menghapus Buku\n\n0] Batalkan ");
                                 System.out
                                         .print("\nApakah anda ingin melakukan sesuatu dengan data buku tersebut?\n$> ");
-                                pilihanInput = input.nextInt();
+                                pilihanInput = validasiInputAngka(input.nextLine());
 
                                 switch (pilihanInput) {
                                     case 11:
@@ -615,7 +622,7 @@ public class Main {
                                     System.out.print("Pengarang         : ");
                                     listBuku[availableSlot][2] = input.nextLine();
                                     System.out.print("Jumlah Stock Buku (harus berupa angka) : ");
-                                    listBuku[availableSlot][5] = String.valueOf(input.nextInt()); // Konversi input ke
+                                    listBuku[availableSlot][5] = String.valueOf(validasiInputAngka(input.nextLine())); // Konversi input ke
                                                                                                   // string
                                     input.nextLine();
                                     do {
@@ -662,7 +669,7 @@ public class Main {
                                     System.out.println("\n---MENGUBAH BUKU---");
                                     do {
                                         System.out.print("Masukkan NOMOR BUKU yang akan diubah: ");
-                                        noBuku = input.nextInt();
+                                        noBuku = validasiInputAngka(input.nextLine());
                                         if (noBuku > 0 && noBuku <= listBuku.length) {
                                             if (listBuku[noBuku - 1][0] != null) {
                                                 break;
@@ -751,7 +758,7 @@ public class Main {
                                         System.out.println("\n---MENGHAPUS BUKU---");
                                         do {
                                             System.out.print("Masukkan NOMOR BUKU yang akan dihapus: ");
-                                            noBuku = input.nextInt();
+                                            noBuku = validasiInputAngka(input.nextLine());
                                             if (noBuku > 0 && noBuku <= listBuku.length) {
                                                 if (listBuku[noBuku - 1][0] != null) {
                                                     break;
@@ -762,7 +769,7 @@ public class Main {
 
                                         System.out.print(
                                                 "\nApakah anda yakin untuk menghapus data diatas?\n1]Ya.\n2]Tidak\n$> ");
-                                        validate = input.nextInt();
+                                        validate = validasiInputAngka(input.nextLine());
                                         switch (validate) {
                                             case 1:
                                                 // Menghapus buku
@@ -1037,7 +1044,7 @@ public class Main {
                             System.out.println("1. Tampilkan buku tersedia\n2. Tambah buku\n3. Kurang buku");
 
                             System.out.print("Masukkan pilihan :");
-                            int pilihan = input.nextInt();
+                            int pilihan = validasiInputAngka(input.nextLine());
 
                             switch (pilihan) {
                                 case 1:
@@ -1066,7 +1073,7 @@ public class Main {
 
                             // Logout User (User meminta untuk logout)
                             toLogin = true; // Akan menuju ke halaman login
-                            exit = false; // Akan keluar dari loop menu
+                            notExit = false; // Akan keluar dari loop menu
                             System.out.println(esc);
                             System.out.println(separator);
                             System.out.println("Berhasil Logout!");
@@ -1080,14 +1087,14 @@ public class Main {
                         System.out.println("\nApakah anda ingin kembali ke menu?\n1] Ya.\n2] Tidak(Logout)");
                         System.out.print("$> ");
 
-                        menu = input.nextInt();
+                        menu = validasiInputAngka(input.nextLine());
 
                         switch (menu) {
                             case 1:
-                                exit = true;
+                                notExit = true;
                                 break;
                             case 2:
-                                exit = false;
+                                notExit = false;
                                 toLogin = true; // Kembali ke halaman Login
                                 System.out.println(esc);
                                 System.out.print(separator);
@@ -1100,7 +1107,7 @@ public class Main {
                                 break;
                         }
                     }
-                } while (exit);
+                } while (notExit);
             } else {
                 System.out.println("Gagal Melakukan Login...");
             }
