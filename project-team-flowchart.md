@@ -20,17 +20,31 @@
 flowchart TD
     
     %% Fungsi
+    %% -------- Saran Judul
+    FungsiSaranJudul(["Fungsi saranJudul(String cariBuku, String[][] arrayData)"]) --> cekKataMirip["Mengecek Kata yang Mirip"]
+    cekKataMirip -- IF TRUE --> outputTampilJudulMirip[/"Tampil Judul yang Mirip"/]
+    outputTampilJudulMirip --> returnFungsiSaranJudul(["return"])
+    cekKataMirip -- IF FALSE --> outputBukuTidakDitemukan[/"Output Buku Tidak Ditemukan!"/]
+    outputBukuTidakDitemukan --> returnFungsiSaranJudul
+    %% -------- Cari Buku
+    FungsiCariNamaBuku(["Fungsi cariBuku(String cariBuku, int i)"]) --> inputCariNamaBuku[/"Memasukkan Input Nama Buku"/]
+    inputCariNamaBuku -- IF FALSE --> tampilSaranJudul[["saranJudul"]]
+    tampilSaranJudul --> returnTrue(["return true"])
+    inputCariNamaBuku -- IF TRUE --> rekursifCariTiapBuku["Mencocokan Tiap Buku"]
+    rekursifCariTiapBuku -- IF FALSE --> returnFungsiCariNamaBuku[["return cariBuku"]]
+    rekursifCariTiapBuku -- IF TRUE --> tampilHasilBuku[/"Menampilkan Hasil Buku"/]
+    tampilHasilBuku --> returnFalse(["return false"])
     %% -------- Input No Buku
-    FungsiInputNoBuku(["Fungsi inputNoBuku()"]) --> InputNoBukuUser["Memasukkan Input noBuku"]
+    FungsiInputNoBuku(["Fungsi inputNoBuku()"]) --> InputNoBukuUser[/"Memasukkan Input noBuku"/]
     InputNoBukuUser --> returnFungsiInputNoBuku(["return noBuku"])
     %% -------- Menampilkan Buku
-    FungsiMenampilkanBuku(["Fungsi TampilBuku()"]) --> MenampilkanListBuku2["Menampilkan List buku"] --> returnFungsiMenampilkanBuku(["return"])
+    FungsiMenampilkanBuku(["Fungsi TampilBuku()"]) --> MenampilkanListBuku2[/"Menampilkan List buku"/] --> returnFungsiMenampilkanBuku(["return"])
     %% -------- Tambah Buku
-    FungsiTambahBuku(["Fungsi tambahBuku(noBuku)"]) --> InputJumlahBuku["Input Jumlah Buku"]
+    FungsiTambahBuku(["Fungsi tambahBuku(int pilihan)"]) --> InputJumlahBuku[/"Input Jumlah Buku"/]
     InputJumlahBuku --> Simpan["Tambah Stock Buku Disimpan"]
     Simpan --> returnFungsiTambahBuku(["return"])
     %% -------- Kurangi Buku
-    FungsiKurangiBuku(["Fungsi kurangiBuku(noBuku)"]) --> InputJumlahBuku2["Input Jumlah Buku"]
+    FungsiKurangiBuku(["Fungsi kurangiBuku(int pilihan)"]) --> InputJumlahBuku2[/"Input Jumlah Buku"/]
     InputJumlahBuku2 --> Simpan2["Kurang Stock Buku Disimpan"]
     Simpan2 --> returnFungsiKurangiBuku(["return"])
 
@@ -67,21 +81,23 @@ flowchart TD
 
     %% 1] Peminjaman Buku
     Menu -- if 1 --> PeminjamanBuku["Peminjaman Buku"]
-    PeminjamanBuku --> JumlahStockAwal["Menampilkan Jumlah Stock Awal"]
-    JumlahStockAwal --> InputJumlahMeminjam["Input Jumlah Meminjam Buku"]
-    InputJumlahMeminjam --> JumlahStockAkhir["Menampilkan jumlah Stock Akhir"]
+    PeminjamanBuku --> JumlahStockAwal[/"Menampilkan Jumlah Stock Awal"/]
+    JumlahStockAwal --> InputJumlahMeminjam[/"Input Jumlah Meminjam Buku"/]
+    InputJumlahMeminjam --> ProsesMeminjamBuku["Proses Mengurangi Buku"]
+    ProsesMeminjamBuku --> JumlahStockAkhir[/"Menampilkan jumlah Stock Akhir"/]
     JumlahStockAkhir --> Point((" "))
 
     %% 2] Pengembalian Buku
     Menu -- if 2 --> PengembalianBuku["Pengembalian Buku"]
-    PengembalianBuku --> JumlahStockAwal2["Menampilkan Jumlah Stock Awal"]
-    JumlahStockAwal2 --> InputJumlahMengembalikan["Input Jumlah Pengembalian Buku"]
-    InputJumlahMengembalikan --> JumlahStockAkhir2["Menampilkan jumlah Stock Akhir"]
+    PengembalianBuku --> JumlahStockAwal2[/"Menampilkan Jumlah Stock Awal"/]
+    JumlahStockAwal2 --> InputJumlahMengembalikan[/"Input Jumlah Pengembalian Buku"/]
+    InputJumlahMengembalikan --> ProsesMengembalikanBuku["Proses Menambah Buku"]
+    ProsesMengembalikanBuku --> JumlahStockAkhir2[/"Menampilkan jumlah Stock Akhir"/]
     JumlahStockAkhir2 --> Point((" "))
 
     %% 3] Manajemen Buku
     Menu -- if 3 --> ManajemenBuku["Manajemen Buku"]
-    ManajemenBuku --> ListBuku["List Buku\n(show list buku)"]
+    ManajemenBuku --> ListBuku[/"List Buku\n(show list buku)"/]
     ListBuku --> MenuManajemenBuku["
         1] Menambahkan Buku Baru
         2] Mengubah Buku
@@ -93,28 +109,28 @@ flowchart TD
         MenuManajemenBuku -- if 0 --> Point((" "))
         %% Menambah Buku Baru
         MenuManajemenBuku -- if 1 --> MenambahBukuBaru["Do - Menambah Buku Baru"]
-        MenambahBukuBaru --> ListBukuFinal["List Buku (update)"]
+        MenambahBukuBaru --> ListBukuFinal[/"Show List Buku (update)"/]
         ListBukuFinal --> Point((" "))
         %%Mengubah Buku
         MenuManajemenBuku -- if 2 --> MengubahBuku["Do - Mengubah Buku"]
-        MengubahBuku --> ListBukuFinal2["List Buku (update)"]
+        MengubahBuku --> ListBukuFinal2[/"Show List Buku (update)"/]
         ListBukuFinal2 --> Point((" "))
         %%Menghapus Buku
         MenuManajemenBuku -- if 3 --> MenghapusBuku["Do - Menghapus Buku"]
-        MenghapusBuku --> ListBukuFinal3["List Buku (update)"]
+        MenghapusBuku --> ListBukuFinal3[/"Show List Buku (update)"/]
         ListBukuFinal3 --> Point((" "))
     
     %% 4] Pencarian Buku
     Menu -- if 4 --> PencarianBuku["Pencarian Buku"]
-    PencarianBuku --> MencariBuku["Do - Mencari Buku"]
-    MencariBuku --> HasilBukuTemuan["Menampilkan Hasil Buku"]
+    PencarianBuku --> MencariBuku[["cariBuku"]]
+    MencariBuku --> HasilBukuTemuan[/"Menampilkan Hasil Buku"/]
     HasilBukuTemuan --> Point((" "))
 
     %% 5] Buku Digital
     Menu -- if 5 --> BukuDigital["Buku Digital"]
-    BukuDigital --> MenampilkanTipeBuku["Menampilkan Tipe Buku"]
+    BukuDigital --> MenampilkanTipeBuku[/"Menampilkan Tipe Buku"/]
     MenampilkanTipeBuku -->  MemilihTipeBuku["Memilih Tipe Buku"]
-    MemilihTipeBuku --> TampilkananBuku["Menampilkan Buku Berupa wujud Link"]
+    MemilihTipeBuku --> TampilkananBuku[/"Menampilkan Buku Berupa wujud Link"/]
     TampilkananBuku --> Point((" "))
     
     %% 6] Pengelolaan Stok Buku
