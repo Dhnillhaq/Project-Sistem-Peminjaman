@@ -14,8 +14,8 @@ public class Main {
     static String[][] listBuku = new String[15][6];
 
     // Fungsi validasiInputAngka
-    static int validasiInputAngka(String inputStr){
-        while (!inputStr.matches("\\d+")){
+    static int validasiInputAngka(String inputStr) {
+        while (!inputStr.matches("\\d+")) {
             System.out.print("----[ERROR]-- Input Harus ANGKA! --[ERROR]----\n$> ");
             inputStr = input.nextLine();
         }
@@ -105,7 +105,7 @@ public class Main {
                     break;
                 }
             }
-            System.out.println("Nomor buku tidak ditemukan!");
+            System.out.println("\nNomor buku tidak ditemukan!\n");
         } while (true);
         return noBuku;
     }
@@ -116,16 +116,62 @@ public class Main {
         int tambah = validasiInputAngka(input.nextLine());
         int hasil = Integer.parseInt(listBuku[pilihan][5]) + tambah;
         listBuku[pilihan][5] = hasil + "";
-        System.out.println("buku berhasil ditambahkan");
+        System.out.println("\nbuku berhasil ditambahkan\n");
     }
 
+    // static void kurangiBuku(int pilihan) {
+        //     System.out.print("Kurangi stock buku : ");
+        //     int kurangi = validasiInputAngka(input.nextLine());
+        //     int stokSaatIni = Integer.parseInt(listBuku[pilihan][5]);
+        //     if (kurangi > stokSaatIni) {
+            //         System.out.println("\nInput melebihi stock yang ada!\n");
+            //     } else {
+                //         int hasil = stokSaatIni - kurangi;
+                //         listBuku[pilihan][5] = hasil + "";
+                //         System.out.println("\nbuku berhasil dikurangi\n");
+                //         tampilStock();
+                //     }
+                // }
+                
     // Fungsi untuk mengurangi stok buku
     static void kurangiBuku(int pilihan) {
-        System.out.print("Kurangi stock buku : ");
-        int kurangi = validasiInputAngka(input.nextLine());
-        int hasil = Integer.parseInt(listBuku[pilihan][5]) - kurangi;
-        listBuku[pilihan][5] = hasil + "";
-        System.out.println("buku berhasil dikurangi");
+        do {
+            System.out.print("Kurangi stock buku : ");
+            int kurangi = validasiInputAngka(input.nextLine());
+            int stokSaatIni = Integer.parseInt(listBuku[pilihan][5]);
+    
+            if (kurangi > stokSaatIni) {
+                System.out.println("\nInput melebihi stock yang ada!\n");
+            } else {
+                int hasil = stokSaatIni - kurangi;
+                listBuku[pilihan][5] = hasil + "";
+                System.out.println("\nbuku berhasil dikurangi\n");
+                tampilStock();
+                break;
+            }
+    
+            System.out.print("Ingin coba lagi? (y/n): ");
+        } while (input.nextLine().equalsIgnoreCase("y"));
+    }
+    
+
+    // Fungsi untuk menampilkan stok buku
+    static void tampilStock() {
+
+        boolean ulangi = true;
+
+        while (ulangi) {
+            System.out.print("Apakah anda ingin menampilkan jumlah stock buku? \n1] Ya\n2] Tidak \n$> ");
+            int inputNo = validasiInputAngka(input.nextLine());
+            if (inputNo == 1) {
+                TampilBuku();
+                break;
+            } else if (inputNo == 2) {
+                ulangi = false;
+            } else {
+                System.out.println("\nInput tidak tersedia!\n");
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -362,7 +408,8 @@ public class Main {
                     isLoop = true;
                     System.out.println(esc);
                     System.out.println(separator);
-                    System.out.println("Halo "+usernameInput+", Selamat Datang di Perpustakaan! (Under Development)\n");
+                    System.out.println(
+                            "Halo " + usernameInput + ", Selamat Datang di Perpustakaan! (Under Development)\n");
 
                     System.out.println("1] Peminjaman Buku");
                     System.out.println("2] Pengembalian Buku");
@@ -416,7 +463,7 @@ public class Main {
 
                             if (pilihBuku == 0)
                                 break;
-                            
+
                             // Sambutan
                             System.out.println(esc);
                             System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
@@ -428,7 +475,7 @@ public class Main {
                             if (selectedStockBuku <= 0) {
                                 System.out.println("\nUpps maaf, sepertinya buku ini sudah kehabisan Stock!");
                                 break;
-                            } 
+                            }
 
                             // User menentukan jumlah peminjaman buku
                             do {
@@ -627,8 +674,10 @@ public class Main {
                                     System.out.print("Pengarang         : ");
                                     listBuku[availableSlot][2] = input.nextLine();
                                     System.out.print("Jumlah Stock Buku (harus berupa angka) : ");
-                                    listBuku[availableSlot][5] = String.valueOf(validasiInputAngka(input.nextLine())); // Konversi input ke
-                                                                                                  // string
+                                    listBuku[availableSlot][5] = String.valueOf(validasiInputAngka(input.nextLine())); // Konversi
+                                                                                                                       // input
+                                                                                                                       // ke
+                                    // string
                                     input.nextLine();
                                     do {
                                         System.out.println("\n1] Akademik\t2] Non Akademik");
@@ -1045,7 +1094,7 @@ public class Main {
                             System.out.println("SELAMAT DATANG DI FITUR BUKU DIGITAL\n");
                             System.out.println("1. Tampilkan buku tersedia\n2. Tambah buku\n3. Kurang buku");
 
-                            System.out.print("Masukkan pilihan :");
+                            System.out.print("Masukkan pilihan : ");
                             int pilihan = validasiInputAngka(input.nextLine());
 
                             switch (pilihan) {
@@ -1056,17 +1105,16 @@ public class Main {
                                     TampilBuku();
                                     int pilih = inputNoBuku();
                                     tambahBuku(pilih - 1);
-                                    TampilBuku();
+                                    tampilStock();
                                     break;
                                 case 3:
                                     TampilBuku();
                                     pilih = inputNoBuku();
                                     kurangiBuku(pilih - 1);
-                                    TampilBuku();
                                     break;
 
                                 default:
-                                    System.out.println("Maaf inputan anda salah");
+                                    System.out.println("Input tidak tersedia!");
                                     break;
                             }
 
