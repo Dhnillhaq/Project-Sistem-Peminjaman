@@ -133,7 +133,7 @@ public class Main {
                 //     }
                 // }
                 
-    // Fungsi untuk mengurangi stok buku
+    // Fungsi untuk mengurangi stok buku 
     static void kurangiBuku(int pilihan) {
         do {
             System.out.print("Kurangi stock buku : ");
