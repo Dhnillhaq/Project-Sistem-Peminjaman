@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner input = new Scanner(System.in);
     static String[][] listBuku = new String[15][6];
+    static int[] ygdiPinjam = new int[15];
 
     // Fungsi validasiInputAngka
     static int validasiInputAngka(String inputStr) {
@@ -119,19 +120,6 @@ public class Main {
         System.out.println("\nbuku berhasil ditambahkan\n");
     }
 
-    // static void kurangiBuku(int pilihan) {
-        //     System.out.print("Kurangi stock buku : ");
-        //     int kurangi = validasiInputAngka(input.nextLine());
-        //     int stokSaatIni = Integer.parseInt(listBuku[pilihan][5]);
-        //     if (kurangi > stokSaatIni) {
-            //         System.out.println("\nInput melebihi stock yang ada!\n");
-            //     } else {
-                //         int hasil = stokSaatIni - kurangi;
-                //         listBuku[pilihan][5] = hasil + "";
-                //         System.out.println("\nbuku berhasil dikurangi\n");
-                //         tampilStock();
-                //     }
-                // }
                 
     // Fungsi untuk mengurangi stok buku 
     static void kurangiBuku(int pilihan) {
@@ -256,7 +244,7 @@ public class Main {
         boolean doRegister = true, doConfirm = true;
 
         // Variabel Pilih Menu dan Stok Buku (Case 1 & Case 2)
-        int pilihanInput, pilihBuku, pinjamBuku, selectedStockBuku;
+        int pilihanInput, pilihBuku, pinjamBuku, selectedStockBuku, kembaliBuku;
         boolean isMinjam = true;
 
         // Variabel Nama, Jumlah Halaman dan Pengarang (Case 3)
@@ -277,7 +265,7 @@ public class Main {
 
         // Variabel UI
         String separator = "------------------------------------------------------------------------";
-        String esc = "\033[H\033[2J";
+        String esc = "\033[H\033[2J"; 
 
         // Variabel Masuk ke program utama
         boolean canLogin = false;
@@ -481,16 +469,16 @@ public class Main {
                             do {
                                 System.out.print("\nJumlah buku yang ingin dipinjam?\n$> ");
                                 pinjamBuku = validasiInputAngka(input.nextLine());
-
+                                
                                 if (pinjamBuku <= selectedStockBuku) {
                                     // Melakukan pengurangan
                                     selectedStockBuku -= pinjamBuku;
-
                                     // Menyimpan jumlah stock buku akhir ke array listBuku semula
                                     listBuku[pilihBuku - 1][5] = String.valueOf(selectedStockBuku);
                                     selectedStockBuku = 0; // Reset selected Stock buku ke 0
-
                                     isMinjam = false;
+                                    ygdiPinjam[pilihBuku-1] += pinjamBuku;
+
                                 } else {
                                     System.out.println("Input anda lebih besar dari stock yang kita punya!\n");
                                     isMinjam = true;
@@ -542,16 +530,32 @@ public class Main {
                             System.out.println(esc);
                             System.out.println("Buku : " + listBuku[pilihBuku - 1][0]);
                             System.out.println("[Stok tersedia = " + listBuku[pilihBuku - 1][5] + "]");
+                            if (ygdiPinjam[pilihBuku-1] > 0) {
+                                System.out.println("Jumlah buku yang anda pinjam: " + ygdiPinjam[pilihBuku-1]);
+                            } else {
+                                System.out.println("\nAnda belum pernah meminjam buku ini.");
+                                break;
+                            }
 
+                            do {
+                            
                             // User menentukan jumlah pengembalian buku
                             System.out.print("\nJumlah buku yang ingin dikembalikan?\n$> ");
-                            pinjamBuku = validasiInputAngka(input.nextLine());
+                            kembaliBuku = validasiInputAngka(input.nextLine());
 
                             // Menyimpan jumlah selected stock buku ke variabel
                             selectedStockBuku = Integer.parseInt(listBuku[pilihBuku - 1][5]);
 
+                            if (kembaliBuku <= ygdiPinjam[pilihBuku-1]) {
+                                selectedStockBuku += kembaliBuku;
+                                ygdiPinjam[pilihBuku-1] -= kembaliBuku;
+                                isMinjam = false;
+                            } else {
+                                System.out.println("Anda mengembalikan jumlah buku lebih banyak dari yang anda pinjam :D");
+                                isMinjam = true;
+                            }
+                            } while (isMinjam);
                             // Melakukan penjumlahan
-                            selectedStockBuku += pinjamBuku;
 
                             // Menyimpan selected stock buku ke array kembali
                             listBuku[pilihBuku - 1][5] = String.valueOf(selectedStockBuku);
