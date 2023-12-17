@@ -669,7 +669,6 @@ public class Main {
                                         }
                                     }
 
-                                    input.nextLine();
                                     System.out.println("\n---MENAMBAHKAN BUKU BARU---");
                                     System.out.print("Nama Buku         : ");
                                     listBuku[availableSlot][0] = input.nextLine();
@@ -680,9 +679,7 @@ public class Main {
                                     System.out.print("Jumlah Stock Buku (harus berupa angka) : ");
                                     listBuku[availableSlot][5] = String.valueOf(validasiInputAngka(input.nextLine())); // Konversi
                                                                                                                        // input
-                                                                                                                       // ke
-                                    // string
-                                    input.nextLine();
+                                             
                                     do {
                                         System.out.println("\n1] Akademik\t2] Non Akademik");
                                         System.out.print("Pilih jenis buku (1/2): ");
@@ -723,7 +720,6 @@ public class Main {
 
                                     break;
                                 case 2:
-                                    input.nextLine();
                                     System.out.println("\n---MENGUBAH BUKU---");
                                     do {
                                         System.out.print("Masukkan NOMOR BUKU yang akan diubah: ");
@@ -736,7 +732,6 @@ public class Main {
                                         System.out.println("Nomor buku tidak ditemukan!");
                                     } while (true);
 
-                                    input.nextLine();
                                     System.out.println(
                                             "\nEdit data Buku... (Berikan input '-' jika tidak ingin merubah)");
                                     System.out.print("Nama Buku     : ");
@@ -812,7 +807,6 @@ public class Main {
                                     break;
                                 case 3:
                                     while (isLoop) {
-                                        input.nextLine();
                                         System.out.println("\n---MENGHAPUS BUKU---");
                                         do {
                                             System.out.print("Masukkan NOMOR BUKU yang akan dihapus: ");
