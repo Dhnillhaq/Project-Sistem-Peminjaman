@@ -261,7 +261,7 @@ public class Main {
 
         // Variabel Meminjam buku digital (Case 5)
         String buku, tipe;
-        byte kodeBuku;
+        int kodeBuku;
 
         // Variabel UI
         String separator = "------------------------------------------------------------------------";
@@ -914,7 +914,7 @@ public class Main {
                                     System.out.println("3. Bintang - Tere Liye");
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // novel
-                                    kodeBuku = input.nextByte();
+                                    kodeBuku = validasiInputAngka(input.nextLine());
                                     System.out.println();
                                     switch (kodeBuku) {
                                         case 1:
@@ -948,7 +948,7 @@ public class Main {
                                     System.out.println("3. Si Juki Komik Strip");
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // komik
-                                    kodeBuku = input.nextByte();
+                                    kodeBuku = validasiInputAngka(input.nextLine());
                                     System.out.println();
                                     switch (kodeBuku) {
                                         case 1:
@@ -997,7 +997,7 @@ public class Main {
                                     System.out.println("2. Majalah Pendis - Skema Pendanaan Pendidikan Islam");
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // majalah
-                                    kodeBuku = input.nextByte();
+                                    kodeBuku = validasiInputAngka(input.nextLine());
                                     System.out.println();
                                     switch (kodeBuku) {
                                         case 1:
@@ -1025,7 +1025,7 @@ public class Main {
                                     System.out.println("3. Jurnal Teknik Sipil");
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // jurnal
-                                    kodeBuku = input.nextByte();
+                                    kodeBuku = validasiInputAngka(input.nextLine());
                                     System.out.println();
                                     switch (kodeBuku) {
                                         case 1:
@@ -1059,7 +1059,7 @@ public class Main {
                                     System.out.println("3. Buku Teknik Sipil UI");
                                     System.out.print("Masukkan nomor judul buku : "); // Melakukan inputan judul buku
                                                                                       // pendidikan
-                                    kodeBuku = input.nextByte();
+                                    kodeBuku = validasiInputAngka(input.nextLine());
                                     System.out.println();
                                     switch (kodeBuku) {
                                         case 1:
