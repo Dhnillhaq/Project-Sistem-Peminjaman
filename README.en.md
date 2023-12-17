@@ -1,5 +1,5 @@
 
-# Project-Sistem-Peminjaman 
+<p align="center"><img src="header.gif" width="1020"></p>
 
 ![Static Badge](https://img.shields.io/badge/Type-System%20Information-13e600) ![Static Badge](https://img.shields.io/badge/-Assignment-red) ![Static Badge](https://img.shields.io/badge/Total%20Team-3%20Human-4a92f0)
 
