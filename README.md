@@ -28,12 +28,17 @@ Berisi mengenai Sistem Informasi Peminjaman, yaitu Perpustakaan.
 
 ---
 
+### Progres dan Dokumentasi
+<a href="https://trello.com/b/2EYjpbhO/projek-sistem-peminjaman" target="_blank">Klik disini</a>
+
+---
+
 
 > __Contributor__ 
 > `NIM` FULL NAME
-- `2341720071` AKHMAD AAKHIF ATHALLAH 
-- `2341720144` DANENDRA NAYAKA PASSADHI
-- `2341720133` MUHAMMAD DHIA RAMADHANIL HAQ
+- `2341720071` [AKHMAD AAKHIF ATHALLAH ](https://github.com/Khip01)
+- `2341720144` [DANENDRA NAYAKA PASSADHI](https://github.com/DanendraPassadhi)
+- `2341720133` [MUHAMMAD DHIA RAMADHANIL HAQ](https://github.com/Dhnillhaq)
 ---
 
 <br>
